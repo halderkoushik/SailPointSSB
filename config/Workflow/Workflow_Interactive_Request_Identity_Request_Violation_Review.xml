@@ -202,7 +202,7 @@
     <Arg name="policyScheme" value="ref:policyScheme"/>
     <Arg name="asyncCacheRefresh" value="ref:asyncCacheRefresh"/>
     <Return name="policyViolations" to="policyViolations"/>
-    <Transition to="Reset Original Plan" when="script:((!&quot;ignore&quot;.equals(violationReviewDecision)) &amp;&amp; size(policyViolations) > 0 &amp;&amp; (policyScheme.equals(&quot;interactive&quot;)))"/>
+    <Transition to="Reset Original Plan" when="script:((!&quot;ignore&quot;.equals(violationReviewDecision)) &amp;&amp; size(policyViolations) &gt; 0 &amp;&amp; (policyScheme.equals(&quot;interactive&quot;)))"/>
     <Transition to="end"/>
   </Step>
   <Step name="Reset Original Plan" posX="378" posY="9">

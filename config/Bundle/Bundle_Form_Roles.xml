@@ -10,7 +10,7 @@
       <entry key="sysDescriptions">
         <value>
           <Map>
-            <entry key="en_US" value="This container is used for Extended Forms&lt;br>"/>
+            <entry key="en_US" value="This container is used for Extended Forms&lt;br&gt;"/>
           </Map>
         </value>
       </entry>

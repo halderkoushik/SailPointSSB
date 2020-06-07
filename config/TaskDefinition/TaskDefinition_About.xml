@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskDefinition PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskDefinition name="About" resultAction="Rename" subType="Administration Reports" type="LiveReport">
+  <Attributes>
+    <Map>
+      <entry key="TaskSchedule.host"/>
+      <entry key="disableDetail" value="false"/>
+      <entry key="disableSummary" value="false"/>
+      <entry key="knownBadVersions">
+        <value>
+          <Map>
+            <entry key="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <entry key="com.mysql.cj.jdbc.Driver"/>
+            <entry key="oracle.jdbc.driver.OracleDriver">
+              <value>
+                <List>
+                  <String>2111220-fc074b0027bc6f77a67a4c4aac2f490d</String>
+                </List>
+              </value>
+            </entry>
+          </Map>
+        </value>
+      </entry>
+      <entry key="reportColumnOrder" value="objectType, property, value"/>
+    </Map>
+  </Attributes>
+  <Description>Displays statistics about IdentityIQ environment</Description>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Parent>
+    <Reference class="sailpoint.object.TaskDefinition" name="Environment Information Report"/>
+  </Parent>
+</TaskDefinition>

@@ -1118,7 +1118,7 @@ Escalation rules return a string which specifies the name of the identity that s
           <Argument name="creator" type="String">
             <Description>The name of identity that created the certification belonging to the work item.</Description>
           </Argument>
-          <Argument name="certifiers" type="List&lt;String>">
+          <Argument name="certifiers" type="List&lt;String&gt;">
             <Description>A list of certifier names for the certification belonging to the work item.</Description>
           </Argument>
           <Argument name="name" type="String">

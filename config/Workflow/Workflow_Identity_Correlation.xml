@@ -245,7 +245,7 @@
     <Arg name="identityName" value="ref:identityName"/>
     <Arg name="plan" value="ref:plan"/>
     <Arg name="policies" value="ref:policiesToCheck"/>
-    <Transition to="Exit On Policy Violation" when="script:((Util.size(policyViolations) > 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))"/>
+    <Transition to="Exit On Policy Violation" when="script:((Util.size(policyViolations) &gt; 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))"/>
     <Transition to="Approval"/>
   </Step>
   <Step condition="script:!approvalScheme.equals(&quot;none&quot;)" icon="Approval" name="Approval" posX="238" posY="288">

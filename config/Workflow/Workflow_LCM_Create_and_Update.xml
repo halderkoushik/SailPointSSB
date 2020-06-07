@@ -313,7 +313,7 @@
     </WorkflowRef>
     <Transition to="Exit On Manual Work Items" when="script:(isTrue(endOnManualWorkItems) &amp;&amp; (project.getUnmanagedPlan() != null))"/>
     <Transition to="Exit On Provisioning Form" when="script:(isTrue(endOnProvisioningForms) &amp;&amp; (project.hasQuestions()))"/>
-    <Transition to="Exit On Policy Violation" when="script:((size(policyViolations) > 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))"/>
+    <Transition to="Exit On Policy Violation" when="script:((size(policyViolations) &gt; 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))"/>
     <Transition to="Create Ticket"/>
   </Step>
   <Step condition="script:(ticketManagementApplication != null)" icon="Task" name="Create Ticket" posX="403" posY="8">

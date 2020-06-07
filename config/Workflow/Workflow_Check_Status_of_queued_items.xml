@@ -132,7 +132,7 @@
        It is easier to pass this option than to transition around this step.
     </Description>
     <Transition to="Requires Check" when="script:( provisioningMaxStatusChecks == -1 || statusChecks &lt; provisioningMaxStatusChecks)"/>
-    <Transition to="Timeout" when="script:( statusChecks >= provisioningMaxStatusChecks )"/>
+    <Transition to="Timeout" when="script:( statusChecks &gt;= provisioningMaxStatusChecks )"/>
     <Transition to="Apply Committed Results"/>
   </Step>
   <Step action="call:addMessage" name="Timeout" posX="916" posY="118">

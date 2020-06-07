@@ -129,7 +129,7 @@
     </WorkflowRef>
     <Transition to="Provision"/>
   </Step>
-  <Step condition="script:!((size(policyViolations) > 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))" icon="Task" name="Provision" posX="290" posY="10">
+  <Step condition="script:!((size(policyViolations) &gt; 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))" icon="Task" name="Provision" posX="290" posY="10">
     <Arg name="approvalScheme" value="ref:approvalScheme"/>
     <Arg name="fallbackApprover" value="ref:fallbackApprover"/>
     <Arg name="foregroundProvisioning" value="ref:foregroundProvisioning"/>
@@ -157,7 +157,7 @@
     </WorkflowRef>
     <Transition to="Finalize"/>
   </Step>
-  <Step catches="complete" condition="script:!((size(policyViolations) > 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))" icon="Task" name="Finalize" posX="410" posY="10">
+  <Step catches="complete" condition="script:!((size(policyViolations) &gt; 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;)))" icon="Task" name="Finalize" posX="410" posY="10">
     <Arg name="approvalSet" value="ref:cart"/>
     <Arg name="project" value="ref:project"/>
     <Arg name="workItemPriority" value="ref:workItemPriority"/>

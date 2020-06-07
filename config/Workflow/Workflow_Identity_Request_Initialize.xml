@@ -286,7 +286,7 @@
       <Reference class="sailpoint.object.Workflow" name="Identity Request Violation Review"/>
     </WorkflowRef>
     <Transition to="end" when="script:(&quot;cancel&quot;.equals(violationReviewDecision))"/>
-    <Transition to="end" when="script:((policyScheme.equals(&quot;fail&quot;) &amp;&amp; (size(policyViolations) > 0 )  ))"/>
+    <Transition to="end" when="script:((policyScheme.equals(&quot;fail&quot;) &amp;&amp; (size(policyViolations) &gt; 0 )  ))"/>
     <Transition to="Rebuild Approval Set"/>
   </Step>
   <Step action="call:buildApprovalSet" name="Rebuild Approval Set" posX="187" posY="252" resultVariable="approvalSet">

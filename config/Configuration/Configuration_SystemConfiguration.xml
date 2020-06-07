@@ -238,7 +238,7 @@
       <entry key="defaultEmailFromAddress" value="admin@example.com"/>
       <entry key="defaultEmailGap" value="0"/>
       <entry key="defaultEmailHost" value="mail.example.com"/>
-      <entry key="defaultHomeWidgets" value="Violations, MyAccessReviews, CertificationCampaigns, TopFiveRisks, Approvals, Forms, DirectReports"/>
+      <entry key="defaultHomeWidgets" value="Approvals, Violations, DirectReports, MyAccessReviews"/>
       <entry key="defaultLanguage" value="en_US"/>
       <entry key="defaultMaxReminders" value="5"/>
       <entry key="defaultQuickLinkCards" value="Policy Violations, Access Reviews, Approvals, Request Access, Track Requests, Manage Accounts, Work Items, Mobile Violation Reviews, Forms, View Identity"/>

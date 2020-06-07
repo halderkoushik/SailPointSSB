@@ -7,7 +7,7 @@
     </Map>
   </Attributes>
   <Section type="text">
-    <Field value="&#xa;          During identity refresh, missing entitlements were detected&#xa;          for one or more assigned roles.  Provisioning these entitlements&#xa;          requires the creation of new accounts on one or more applications.&#xa;          Please supply initial values for account attributes in the forms below.&#xa;        "/>
+    <Field value="&#10;          During identity refresh, missing entitlements were detected&#10;          for one or more assigned roles.  Provisioning these entitlements&#10;          requires the creation of new accounts on one or more applications.&#10;          Please supply initial values for account attributes in the forms below.&#10;        "/>
   </Section>
   <Section label="Target Identity" type="datatable">
     <Attributes>

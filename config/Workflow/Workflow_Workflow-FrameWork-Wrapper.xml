@@ -720,7 +720,7 @@
     </WorkflowRef>
     <Transition to="Exit On Manual Work Items" when="script:(isTrue(endOnManualWorkItems) &amp;&amp; (project.getUnmanagedPlan() != null))"/>
     <Transition to="Exit On Provisioning Form" when="script:(isTrue(endOnProvisioningForms) &amp;&amp; (project.hasQuestions()))"/>
-    <Transition to="Exit On Policy Violation" when="script:(&quot;cancel&quot;.equals(violationReviewDecision) || ((size(policyViolations) > 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;))))"/>
+    <Transition to="Exit On Policy Violation" when="script:(&quot;cancel&quot;.equals(violationReviewDecision) || ((size(policyViolations) &gt; 0 ) &amp;&amp; (policyScheme.equals(&quot;fail&quot;))))"/>
     <Transition to="Exit On Invalid Privileged Access" when="psaValidationError!=null"/>
     <Transition to="Update Ext Attributes With Request Id"/>
   </Step>

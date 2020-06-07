@@ -250,7 +250,7 @@
          
       ]]></Source>
     </Script>
-    <Transition to="Wait for next retry" when="script:(retries > 0)"/>
+    <Transition to="Wait for next retry" when="script:(retries &gt; 0)"/>
     <Transition to="Provision"/>
   </Step>
   <Step name="Wait for next retry" wait="ref:retryInterval">
@@ -348,7 +348,7 @@
        to the workflow setting.
     </Description>
     <Transition to="Start" when="script:( ( retryProject != null ) &amp;&amp; ( provisioningMaxRetries == -1 || retries &lt; provisioningMaxRetries ) )"/>
-    <Transition to="Timeout" when="script:( ( retryProject != null ) &amp;&amp;( retries >= provisioningMaxRetries ) )"/>
+    <Transition to="Timeout" when="script:( ( retryProject != null ) &amp;&amp;( retries &gt;= provisioningMaxRetries ) )"/>
     <Transition to="Check for more provisioning"/>
   </Step>
   <Step name="Check for more provisioning" posX="472" posY="259" resultVariable="project">

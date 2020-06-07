@@ -7,7 +7,7 @@
     </Map>
   </Attributes>
   <Section type="text">
-    <Field value="&#xa;          Please supply initial values for account attributes in the forms below.&#xa;        "/>
+    <Field value="&#10;          Please supply initial values for account attributes in the forms below.&#10;        "/>
   </Section>
   <Section label="Request Information" type="datatable">
     <Attributes>

@@ -2185,7 +2185,7 @@ Directory user account to their Azure AD user object</Description>
                   <entry key="LDAPApplicationVersion" value="2.0"/>
                   <entry key="charsToEscapeAtEndInDN" value=" "/>
                   <entry key="charsToEscapeAtStartInDN" value=" #"/>
-                  <entry key="charsToEscapeInDN" value=",+\&quot;&lt;>;"/>
+                  <entry key="charsToEscapeInDN" value=",+\&quot;&lt;&gt;;"/>
                   <entry key="charsToEscapeWhileProvisioning" value="/"/>
                   <entry key="convertHexToCharacter" value="true"/>
                   <entry key="formPath" value="ldapNISAttributesForm.xhtml"/>
@@ -3701,7 +3701,7 @@ Directory user account to their Azure AD user object</Description>
                       </List>
                     </value>
                   </entry>
-                  <entry key="Prompt" value="SAILPOINT>"/>
+                  <entry key="Prompt" value="SAILPOINT&gt;"/>
                   <entry key="PwdDBFormat">
                     <value>
                       <List>
@@ -3716,7 +3716,7 @@ Directory user account to their Azure AD user object</Description>
                     </value>
                   </entry>
                   <entry key="SSHLoginTimeout" value="1000"/>
-                  <entry key="SetPrompt" value="PS1='SAILPOINT>'"/>
+                  <entry key="SetPrompt" value="PS1='SAILPOINT&gt;'"/>
                   <entry key="ShadowDBFormat">
                     <value>
                       <List>
@@ -5263,7 +5263,7 @@ Directory user account to their Azure AD user object</Description>
                 <Map>
                   <entry key="charsToEscapeAtEndInDN" value=" "/>
                   <entry key="charsToEscapeAtStartInDN" value=" #"/>
-                  <entry key="charsToEscapeInDN" value=",+\&quot;&lt;>;"/>
+                  <entry key="charsToEscapeInDN" value=",+\&quot;&lt;&gt;;"/>
                   <entry key="charsToEscapeWhileProvisioning" value="/"/>
                   <entry key="formPath" value="ldapAttributesForm.xhtml"/>
                   <entry key="groupEntitlementAttr" value="groups"/>
@@ -6879,7 +6879,7 @@ Directory user account to their Azure AD user object</Description>
                   <entry key="LDAPApplicationVersion" value="2.0"/>
                   <entry key="charsToEscapeAtEndInDN" value=" "/>
                   <entry key="charsToEscapeAtStartInDN" value=" #"/>
-                  <entry key="charsToEscapeInDN" value=",+\&quot;&lt;>;"/>
+                  <entry key="charsToEscapeInDN" value=",+\&quot;&lt;&gt;;"/>
                   <entry key="charsToEscapeWhileProvisioning" value="/"/>
                   <entry key="disablePooling" value="true"/>
                   <entry key="formPath" value="ldapNISAttributesForm.xhtml"/>
@@ -7705,9 +7705,9 @@ Directory user account to their Azure AD user object</Description>
                       </List>
                     </value>
                   </entry>
-                  <entry key="Prompt" value="SAILPOINT>"/>
+                  <entry key="Prompt" value="SAILPOINT&gt;"/>
                   <entry key="SSHLoginTimeout" value="1000"/>
-                  <entry key="SetPrompt" value="PS1='SAILPOINT>'"/>
+                  <entry key="SetPrompt" value="PS1='SAILPOINT&gt;'"/>
                   <entry key="SudoBasicError" value="sudo: Command not found."/>
                   <entry key="SudoBasicErrorCode" value="127"/>
                   <entry key="SudoError" value="Sorry, try again."/>
@@ -12998,7 +12998,7 @@ Directory user account to their Azure AD user object</Description>
                       </List>
                     </value>
                   </entry>
-                  <entry key="Prompt" value="SAILPOINT>"/>
+                  <entry key="Prompt" value="SAILPOINT&gt;"/>
                   <entry key="PwdDBFormat">
                     <value>
                       <List>
@@ -13013,7 +13013,7 @@ Directory user account to their Azure AD user object</Description>
                     </value>
                   </entry>
                   <entry key="SSHLoginTimeout" value="1000"/>
-                  <entry key="SetPrompt" value="PS1='SAILPOINT>'"/>
+                  <entry key="SetPrompt" value="PS1='SAILPOINT&gt;'"/>
                   <entry key="ShadowDBFormat">
                     <value>
                       <List>
@@ -15545,7 +15545,7 @@ Directory user account to their Azure AD user object</Description>
                       <entry key="referencedApplications"/>
                       <entry key="schemaName" value="whiteops"/>
                       <entry key="targetHosts"/>
-                      <entry key="url" value="jdbc:sqlserver://&lt;siqServer>:&lt;port>;databaseName=&lt;dbName>"/>
+                      <entry key="url" value="jdbc:sqlserver://&lt;siqServer&gt;:&lt;port&gt;;databaseName=&lt;dbName&gt;"/>
                       <entry key="user" value="SecurityIQ_User"/>
                     </Map>
                   </Attributes>

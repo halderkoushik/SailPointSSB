@@ -147,7 +147,7 @@
             return ApprovalRuleLibrary.getPossibleApprovalTypes(context, workflow);
         ]]></Source>
     </Script>
-    <Transition to="Get Next Approval Type" when="script:approvalTypes != null &amp;&amp; approvalTypes.size() > 0"/>
+    <Transition to="Get Next Approval Type" when="script:approvalTypes != null &amp;&amp; approvalTypes.size() &gt; 0"/>
     <Transition to="Auto Approve"/>
   </Step>
   <Step name="Get Next Approval Type" resultVariable="currentApprovalType">
