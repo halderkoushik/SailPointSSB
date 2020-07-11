@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE IdentityTrigger PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<IdentityTrigger handler="sailpoint.api.WorkflowTriggerHandler" name="AllState-Event-LeaverDAMail" type="Rule">
+  <Description>Disable all accounts when a user leaves.</Description>
+  <HandlerParameters>
+    <Attributes>
+      <Map>
+        <entry key="workflow" value="AllState-Workflow-LeaverDAMail"/>
+      </Map>
+    </Attributes>
+  </HandlerParameters>
+  <TriggerRule>
+    <Reference class="sailpoint.object.Rule" name="AllState-Rule-IdentityTriggerLeaverDAMail"/>
+  </TriggerRule>
+  <Selector>
+    <IdentitySelector>
+      <MatchExpression>
+        <MatchTerm name="inactive" type="Entitlement" value="false"/>
+      </MatchExpression>
+    </IdentitySelector>
+  </Selector>
+</IdentityTrigger>

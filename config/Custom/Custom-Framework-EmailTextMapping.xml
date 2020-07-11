@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Custom PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Custom name="Custom-Framework-EmailTextMapping">
+  <Attributes>
+    <Map>
+      <entry key="CART REQUEST FEATURE">
+        <value>
+          <Map>
+            <entry key="EmailTemplate-FrameworkApproval"/>
+            <entry key="EmailTemplate-FrameworkAutoRejection"/>
+            <entry key="EmailTemplate-FrameworkEscalation"/>
+            <entry key="EmailTemplate-FrameworkReminder"/>
+            <entry key="EmailTemplate-FrameworkRequestCompletion"/>
+            <entry key="EmailTemplate-FrameworkRequestSubmission">
+              <value>
+                <Map>
+                  <entry key="Test AD Allstate">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="None"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
+          </Map>
+        </value>
+      </entry>
+      <entry key="JOINER FEATURE">
+        <value>
+          <Map>
+            <entry key="AllState-EmailTemplate-FrameworkJoinerManager">
+              <value>
+                <Map>
+                  <entry key="HR - Employees">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="Test HR">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="dilab.ca-AD">
+                    <value>
+                      <Map>
+                        <entry key="Create" value="This is the Login ID of the onboarded user : $sAMAccountName."/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
+            <entry key="EmailTemplate-FrameworkPasswordJoinerManager">
+              <value>
+                <Map>
+                  <entry key="HR - Employees">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="Test HR">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="dilab.ca-AD">
+                    <value>
+                      <Map>
+                        <entry key="Create" value="This is the password of the onboarded user : $password"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
+          </Map>
+        </value>
+      </entry>
+      <entry key="JOINER REHIRE FEATURE">
+        <value>
+          <Map>
+            <entry key="AllState-EmailTemplate-FrameworkJoinerManager">
+              <value>
+                <Map>
+                  <entry key="HR - Employees">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="Test AD Allstate">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="Test HR">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="dilab.ca-AD">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
+            <entry key="EmailTemplate-FrameworkPasswordJoinerManager">
+              <value>
+                <Map>
+                  <entry key="HR - Employees">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="Test AD Allstate">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="Test HR">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                  <entry key="dilab.ca-AD">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
+          </Map>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+</Custom>

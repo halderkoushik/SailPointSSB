@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Workflow PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Workflow name="AllState-Workflow-LeaverDAMail" type="IdentityLifecycle">
+  <Variable initializer="true" name="removeRole">
+    <Description>To represent role removal</Description>
+  </Variable>
+  <Variable initializer="true" name="trace"/>
+  <Variable initializer="true" name="HasAD"/>
+  <Variable name="project"/>
+  <Variable input="true" name="trigger">
+    <Description>The IdentityTrigger</Description>
+  </Variable>
+  <Variable name="planRole">
+    <Description>To represent request for role removal</Description>
+  </Variable>
+  <Variable input="true" name="event">
+    <Description>The IdentityChangeEvent</Description>
+  </Variable>
+  <Variable input="true" name="identityName">
+    <Description>The name of the identity.</Description>
+  </Variable>
+  <Variable initializer="AccountsRequest" name="flow">
+    <Description>The name of the workflow.</Description>
+  </Variable>
+  <Variable initializer="string:LCM" name="source">
+    <Description>The name of the identity.</Description>
+  </Variable>
+  <Variable initializer="script:resolveDisplayName(identityName)" input="true" name="identityDisplayName"/>
+  <Variable input="true" name="accountType">
+    <Description>Previous Account Type of User in Sailpoint</Description>
+  </Variable>
+  <Variable initializer="true" name="toTerminate"/>
+  <Description>This is the joiner workflow for the employee onboarding</Description>
+  <RuleLibraries>
+    <Reference class="sailpoint.object.Rule" name="AllState-RuleLibrary-Common"/>
+  </RuleLibraries>
+  <Step icon="Start" name="Start" posX="100" posY="10" wait="-1">
+    <Transition to="Send Email"/>
+  </Step>
+  <Step name="Send Email" posX="100" posY="40">
+    <Description>
+      Send Notification for the Provisioning
+    </Description>
+    <Script>
+      <Source><![CDATA[
+        import sailpoint.object.ProvisioningResult;
+        import sailpoint.api.ObjectUtil;
+        import sailpoint.object.Application;
+		import sailpoint.tools.Util;
+		
+        Map emailMap = new HashMap();
+        Identity identity = context.getObjectByName(Identity.class, identityName); 
+       
+        if(identity != null) {
+        emailMap.put("firstName",identity.getAttribute("firstname"));
+        emailMap.put("lastName",identity.getAttribute("lastname"));
+        emailMap.put("employeeId",identity.getAttribute("ntid"));
+        Identity managerIdentity = identity.getManager();
+        if(managerIdentity != null) {
+			String managerName = managerIdentity.getAttribute("firstname") + " " + managerIdentity.getAttribute("lastname");
+			log.debug("manager identity name is"+managerName);
+			emailMap.put("supervisor",managerName);
+		}
+	//To get HelpDesk members'email to send termination details
+		String DAEmail=null;
+        Identity workgroupDA = context.getObjectByName(Identity.class,"AllState-Workgroup-DA"); 
+		log.debug("workgroupDA identity name is"+workgroupDA);
+		if(workgroupDA != null){
+			List workgroupMembersEmailList = null;
+			workgroupMembersEmailList=ObjectUtil.getEffectiveEmails(context,workgroupDA);	
+			DAEmail=Util.listToCsv(workgroupMembersEmailList); 
+			log.debug("DAEmail identity name is "+DAEmail);
+		}
+	    if(DAEmail != null){
+	    sendEmail(DAEmail,"AllState-EmailTemplate-EmployeeOffboardingDA",emailMap,true);
+        log.debug("ownerEmailId email is after sending"+ownerEmailId);
+        }
+      }
+        
+   ]]></Source>
+    </Script>
+    <Transition to="Stop"/>
+  </Step>
+  <Step icon="Stop" name="Stop" posX="100" posY="50"/>
+</Workflow>

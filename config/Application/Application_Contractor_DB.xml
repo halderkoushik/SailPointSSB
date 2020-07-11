@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application authoritative="true" connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS, SEARCH, ENABLE, UNLOCK" icon="databaseIcon" name="Contractor DB" profileClass="" type="JDBC">
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="Select * from appsdb.contractor_identity"/>
+      <entry key="acceleratorPackEnabled" value="TRUE"/>
+      <entry key="accountCorrelationAttrExpression" value="name#IIQCorrelated#id"/>
+      <entry key="accountCreateConditionalRule"/>
+      <entry key="accountCreateEntitlements"/>
+      <entry key="accountDisableAttrExpression"/>
+      <entry key="accountLockAttrExpression"/>
+      <entry key="additionalAppBusApprovalRule"/>
+      <entry key="additionalAppBusApprovers"/>
+      <entry key="afterProvisioningRule"/>
+      <entry key="afterpwdexpAttr"/>
+      <entry key="afterticketprovisioningExtendedrule"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apAdditionalApplicationAfterProvisioningRule"/>
+      <entry key="apAdditionalApplicationCorrelationRule"/>
+      <entry key="apAdditionalApplicationCreationRule"/>
+      <entry key="apAdditionalApplicationCustomizationRule"/>
+      <entry key="apAdditionalApplicationMCustomizationRule"/>
+      <entry key="apAdditionalApplicationMGroupRefreshRule"/>
+      <entry key="apAdditionalApplicationPreIterateRule"/>
+      <entry key="apAfterMoverJoiner">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apAfterRehireAttrSync">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apAppendApplicationName">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apAttributeSyncEligibleRule"/>
+      <entry key="apBeforeMoverAttrSync">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apPopulationReverseLeaverOptions"/>
+      <entry key="apServiceAccountUniqueName"/>
+      <entry key="appBusApprovalRule"/>
+      <entry key="appBusApprovers"/>
+      <entry key="assignmentGroupname"/>
+      <entry key="authoritativeEmployee" value="false"/>
+      <entry key="authoritativeNonEmployee" value="true"/>
+      <entry key="authoritativeServiceAccount" value="false"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="beforemoverPrimaryaccount">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="beforepwdexpAttr"/>
+      <entry key="birthrightEntAttrExpression"/>
+      <entry key="busApp">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="commentsAttr"/>
+      <entry key="commentsValue"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="displayFormRule"/>
+      <entry key="driverClass" value="com.mysql.jdbc.Driver"/>
+      <entry key="eligibilityExpression"/>
+      <entry key="enablepsaValidation">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="enablepswexpNotification"/>
+      <entry key="entDir">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="evaluateCreateprovpolicy" value="False"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="hardPolicyviolations"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcExceptionBucketing">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="jdbcProvisionRule" value="AllState-Rule-ProvisioningContractorDB"/>
+      <entry key="joinerEnabled"/>
+      <entry key="joinerPopulationRegex"/>
+      <entry key="joinerRoles"/>
+      <entry key="loaExtendedRule"/>
+      <entry key="loaProcess" value="Do Nothing"/>
+      <entry key="ltdExtendedRule"/>
+      <entry key="ltdProcess" value="Do Nothing"/>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="moveAccountContainer"/>
+      <entry key="moverExtendedRule"/>
+      <entry key="moverProcess" value="Do Nothing"/>
+      <entry key="moverRevocation" value="Do Nothing"/>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="nativeChangeProcess" value="Do Nothing"/>
+      <entry key="omitmanagerPrivgaccess">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="1:ACP:ihXdVrtaoHDWGCPig4v8fHj9GTmgLnlMcwXokf2pPEI="/>
+      <entry key="policyType" value="Do Nothing"/>
+      <entry key="policytypeExceptions"/>
+      <entry key="primarySyncaccounts">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="primarypasswordSyncaccounts">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="privilegedAccountAttrExpression"/>
+      <entry key="privilegedEntAttrExpression"/>
+      <entry key="provisionRule" value="globalRule"/>
+      <entry key="pwdexpAttr"/>
+      <entry key="pwdexpAttrexpressionRule"/>
+      <entry key="rehireExtendedRule"/>
+      <entry key="rehirePrimaryaccount">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="rehireProcess" value="Do Nothing"/>
+      <entry key="removeEntitlementLeaverExceptionExpression"/>
+      <entry key="renameLDAPaccount">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="requestorFormRole"/>
+      <entry key="reverseTerminationExtendedRule"/>
+      <entry key="reverseleaverProcess" value="Do Nothing"/>
+      <entry key="rtwLOAExtendedRule"/>
+      <entry key="rtwLTDxtendedRule"/>
+      <entry key="rtwloaProcess" value="Do Nothing"/>
+      <entry key="rtwltdProcess" value="Do Nothing"/>
+      <entry key="scramPwdattr"/>
+      <entry key="scramblePasswordAttr"/>
+      <entry key="serviceAccountAttrExpression"/>
+      <entry key="skipSupervisorApproval"/>
+      <entry key="softPolicyviolations"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="targetpasswordSync"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="terminationExtendedRule"/>
+      <entry key="terminationProcess" value="Do Nothing"/>
+      <entry key="testConnSQL" value="Select * from appsdb.contractor_identity"/>
+      <entry key="txCombinationName"/>
+      <entry key="url" value="jdbc:mysql://127.0.0.1:3306/appsdb"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDelta">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDirectPermission">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureGetObject">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedurePartition">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureSqlStmt">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureTestConn">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="appsuser"/>
+      <entry key="xDays"/>
+      <entry key="xDeleteDays"/>
+      <entry key="xdaysresetPwd"/>
+    </Map>
+  </Attributes>
+  <CorrelationRule>
+    <Reference class="sailpoint.object.Rule" name="Rule-FrameWork-Correlation"/>
+  </CorrelationRule>
+  <CreationRule>
+    <Reference class="sailpoint.object.Rule" name="Rule-FrameWork-Creation-Joiner-Authoritative-Source"/>
+  </CreationRule>
+  <CustomizationRule>
+    <Reference class="sailpoint.object.Rule" name="Rule-Framework-RapidAppOnBoarding-Customization-Rule"/>
+  </CustomizationRule>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="Create Account" objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Create Account"/>
+        </Map>
+      </Attributes>
+      <Section name="Section 1">
+        <Field displayName="Contractor ID" name="userID" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="First Name" name="firstname" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Last Name" name="lastname" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="End Date" name="enddate" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Email ID" name="email" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Middle Name" name="middlename" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Contractor Status" name="contractorStatus" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Contractor Sponsor Manager" name="contractorSponsorManager" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Contractor Assignment Manager" name="contractorAssignmentManager" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Creation Date" name="creationDate" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Last Update Date" name="lastUpdateDate" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+      </Section>
+    </Form>
+    <Form name="Update Account" objectType="account" type="Update">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Update Account"/>
+        </Map>
+      </Attributes>
+      <Section name="Section 1">
+        <Field displayName="Contractor ID" name="userID" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+          </RuleRef>
+        </Field>
+      </Section>
+      <Field displayName="First Name" name="firstname" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="Last Name" name="lastname" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="End Date" name="enddate" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="Email ID" name="email" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="Middle Name" name="middlename" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="Contractor Status" name="contractorStatus" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="Contractor Sponsor Manager" name="contractorSponsorManager" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="Contractor Assignment Manager" name="contractorAssignmentManager" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="Last Update Date" name="lastUpdateDate" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="AllState-Rule-ContractorDBFieldValue"/>
+        </RuleRef>
+      </Field>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="displayname" identityAttribute="userID" instanceAttribute="" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="firstname" type="string"/>
+      <AttributeDefinition name="lastname" type="string"/>
+      <AttributeDefinition name="middlename" type="string"/>
+      <AttributeDefinition name="displayname" type="string"/>
+      <AttributeDefinition name="contractortype" type="string"/>
+      <AttributeDefinition name="personalemail" type="string"/>
+      <AttributeDefinition name="email" type="string"/>
+      <AttributeDefinition name="department" type="string"/>
+      <AttributeDefinition name="jobtitle" type="string"/>
+      <AttributeDefinition name="city" type="string"/>
+      <AttributeDefinition name="country" type="string"/>
+      <AttributeDefinition name="costcenter" type="string"/>
+      <AttributeDefinition name="comments" type="string"/>
+      <AttributeDefinition name="startdate" type="string"/>
+      <AttributeDefinition name="enddate" type="string"/>
+      <AttributeDefinition name="extended1" type="string"/>
+      <AttributeDefinition name="extended2" type="string"/>
+      <AttributeDefinition name="extended3" type="string"/>
+      <AttributeDefinition name="extended4" type="string"/>
+      <AttributeDefinition name="extended5" type="string"/>
+      <AttributeDefinition name="manager" type="string"/>
+      <AttributeDefinition name="creationDate" type="string"/>
+      <AttributeDefinition name="lastUpdateDate" type="string"/>
+      <AttributeDefinition name="contractorAssignmentManager" type="string"/>
+      <AttributeDefinition name="contractorSponsorManager" type="string"/>
+      <AttributeDefinition name="userID" type="string"/>
+      <AttributeDefinition name="contractorStatus" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

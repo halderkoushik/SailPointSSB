@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Custom PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Custom name="AllState-Custom-TokenizationInCode">
+  <Attributes>
+    <Map>
+      <entry key="ADDomain" value="DC=dilab,DC=ca"/>
+      <entry key="Application" value="dilab.ca-AD"/>
+      <entry key="DN" value=",OU=Employees,OU=Users and Groups,DC=dilab,DC=ca"/>
+      <entry key="groupDN" value="CN=All-Employees,OU=Groups,OU=Users and Groups,DC=dilab,DC=ca"/>
+      <entry key="upnDomain" value="@dilab.ca"/>
+    </Map>
+  </Attributes>
+</Custom>

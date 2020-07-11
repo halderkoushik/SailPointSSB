@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule language="beanshell" name="AllState-Rule-ADFieldValue" type="FieldValue">
+  <Description>This rule can be used to generate a field value (eg - an account name) using data from the given Identity. If this rule is run in the context of a workflow step then the arguments passed into the step will also be available. Also, any field values that have been processed so far from the policy related to the Application/Role will be available.</Description>
+  <ReferencedRules>
+    <Reference class="sailpoint.object.Rule" name="AllState-RuleLibrary-Common"/>
+  </ReferencedRules>
+  <Signature returnType="String">
+    <Inputs>
+      <Argument name="log">
+        <Description>
+          The log object associated with the SailPointContext.
+        </Description>
+      </Argument>
+      <Argument name="context">
+        <Description>
+          A sailpoint.api.SailPointContext object that can be used to query the database if necessary.
+        </Description>
+      </Argument>
+      <Argument name="identity" type="Identity">
+        <Description>
+          The Identity object that represents the user needing the field value.
+        </Description>
+      </Argument>
+      <Argument name="link" type="Link">
+        <Description>
+          The sailpoint.object.Link that is being acted upon. If the link is not applicable,
+          this value will be null.
+        </Description>
+      </Argument>
+      <Argument name="group" type="ManagedAttribute">
+        <Description>
+          The sailpoint.object.ManagedAttribute that is being acted upon. If the managed attribute
+          is not applicable, the value will be null.
+        </Description>
+      </Argument>
+      <Argument name="project" type="ProvisioningProject">
+        <Description>
+          The provisioning project being acted upon. If a provisioning project is not applicable,
+          the value will be null.
+        </Description>
+      </Argument>
+      <Argument name="accountRequest" type="ProvisioningPlan.AccountRequest">
+        <Description>
+          The account request. If an account request is not applicable, the value will be null.
+        </Description>
+      </Argument>
+      <Argument name="objectRequest" type="ProvisioningPlan.ObjectRequest">
+        <Description>
+          The object request. If an object request is not applicable, the value will be null.
+        </Description>
+      </Argument>
+      <Argument name="role" type="Bundle">
+        <Description>
+          The role with the template we are compiling. If the role is
+          not applicable, the value will be null.
+        </Description>
+      </Argument>
+      <Argument name="application" type="Application">
+        <Description>
+          The sailpont.object.Application with the template we are compiling. If the application
+          is not applicable, the value will be null.
+        </Description>
+      </Argument>
+      <Argument name="template" type="Template">
+        <Description>
+          The Template that contains this field.
+        </Description>
+      </Argument>
+      <Argument name="field" type="Field">
+        <Description>
+          The current field being computed.
+        </Description>
+      </Argument>
+      <Argument name="current" type="Object">
+        <Description>
+          The current value corresponding to the identity or account attribute that the field represents.
+          If no current value is set, this value will be null.
+        </Description>
+      </Argument>
+      <Argument name="operation" type="ProvisioningPlan.Operation">
+        <Description>
+          The operation being performed.
+        </Description>
+      </Argument>
+    </Inputs>
+    <Returns>
+      <Argument name="value">
+        <Description>
+          The string value created.
+        </Description>
+      </Argument>
+    </Returns>
+  </Signature>
+  <Source><![CDATA[//This rule is used to provide values to different fields in AD Provisioning Policy
+  import java.text.SimpleDateFormat;
+  import java.util.Date;
+  import org.apache.log4j.Logger;
+  import org.apache.log4j.Level;
+  import sailpoint.object.PasswordPolicy;
+  import sailpoint.api.PasswordGenerator;
+
+
+  Logger logger = Logger.getLogger("com.CustomLog.Logging");
+
+
+
+  
+    //Field value for distinguishedName
+  if(field != null && field.getName().equalsIgnoreCase("distinguishedName"))
+  {
+    
+//	String samAccountName = form.getField("sAMAccountName").getValue();
+	logger.debug("samAccountName is in DN rule" +identity.getAttribute("ntid") );
+	String dn = "CN="+identity.getAttribute("ntid")+ getValuefromConfig("AllState-Custom-TokenizationInCode","DN");
+	logger.debug("distinguishedName is" +dn );
+	return dn;
+  }
+  
+ 
+  
+  
+   //Field value for samAccountName
+  if(field != null && field.getName().equalsIgnoreCase("sAMAccountName"))
+  {
+    logger.debug("sAMAccountName is in AD field value rule" + identity.getAttribute("ntid"));
+    return identity.getAttribute("ntid");
+  }
+  
+  
+    //Field value for extensionAttribute2
+  if(field != null && field.getName().equalsIgnoreCase("extensionAttribute2"))
+  {
+    logger.debug("extensionAttribute2 is in AD field value rule" + identity.getName());
+    return identity.getName();
+  }
+  
+   //Field value for userID
+  if(field != null && field.getName().equalsIgnoreCase("userID"))
+  {
+	if(lastName != null && firstName != null && middlename != null ) {
+	middlename = middlename.toLowerCase();
+	logger.debug("in userID rule");
+    lastName=lastName.replaceAll("\\s+","");
+    lastName=lastName.toLowerCase();
+	int lastNameLength = lastName.length();
+	logger.debug("in userID rule, lastNameLength is " + lastNameLength);
+	if(lastNameLength > 8) {
+		logger.debug("in userID rule, lastNameLength is greater than 8");
+		lastName = lastName.substring(0,7);
+	}
+	
+	
+	logger.debug("middleName is"+ middlename);
+	logger.debug("firstName is"+ firstName);
+	logger.debug("lastName first 8 characters are"+ lastName);
+    //Generating the samAccountName for the user
+	if(firstName != null &&  lastName != null) {
+	firstName=firstName.toLowerCase();
+    String samAccountName = firstName.charAt(0).toString() + lastName + "0ca";
+	logger.debug("userID is in first case" + samAccountName);
+	//To check if the samAccountName is already present
+    String samAccountNameStatus = checkAttributeInAD(samAccountName, "sAMAccountName");
+    //Using middleName check for duplicate case     
+      if (samAccountNameStatus != null && samAccountNameStatus.equalsIgnoreCase("duplicate")) {
+		//using lastname's 7 characters and firstname and middlename initial characters
+		if(lastNameLength > 7) {
+			logger.debug("in samAccount rule, lastNameLength is greater than 7");
+			lastName =   lastName.substring(0,6);
+		}
+		if(middlename != null) {
+		logger.debug("middlename not null");
+        samAccountName = firstName.charAt(0).toString() + middlename.charAt(0).toString() + lastName + "0ca";
+		logger.debug("middlename not null" + samAccountName);
+	    samAccountNameStatus = checkAttributeInAD(samAccountName, "sAMAccountName");
+		}
+	  if (samAccountNameStatus != null && samAccountNameStatus.equalsIgnoreCase("duplicate")) {
+			if(lastNameLength > 7) {
+				logger.debug("in samAccount rule, lastNameLength is greater than 7");
+				lastName =   lastName.substring(0,6);
+			}
+			logger.debug("first two letters of the firstname case");
+			samAccountName = firstName.charAt(0).toString() + firstName.charAt(1).toString() + lastName + "0ca";
+			logger.debug("first two letters of the firstname case, checking duplicate");
+			samAccountNameStatus = checkAttributeInAD(samAccountName, "sAMAccountName");
+			if (samAccountNameStatus != null && samAccountNameStatus.equalsIgnoreCase("duplicate")) {
+				if(lastNameLength > 6) {
+					logger.debug("in samAccount rule, lastNameLength is greater than 6");
+					lastName =   lastName.substring(0,5);
+				}
+			logger.debug("first three letters of the firstname case");
+			samAccountName = firstName.charAt(0).toString() + firstName.charAt(1).toString() + firstName.charAt(2).toString()+ lastName + "0ca";
+			logger.debug("first three letters of the firstname case, checking duplicate");
+			return samAccountName;
+			}
+			else {
+			logger.debug("returning samAccountName as" + samAccountName);
+			return samAccountName;
+		} 
+	 }  
+ else {
+	    logger.debug("returning samAccountName as" + samAccountName);
+		return samAccountName;
+	}
+  }
+ else {
+	    logger.debug("returning samAccountName as" + samAccountName);
+		return samAccountName;
+	}
+  }
+ }
+}
+
+ //Field value for UPN
+  if(field != null && field.getName().equalsIgnoreCase("userPrincipalName"))
+  {
+    
+
+	logger.debug("samAccountName is in userPrincipalName rule" +identity.getAttribute("ntid") );
+	String upn = identity.getAttribute("ntid");
+	int stringLength = upn.length();
+	logger.debug("stringLength is" +stringLength );
+	upn = upn.substring(0,stringLength-3);
+	logger.debug("upn is" +upn );
+	upn = upn + getValuefromConfig("AllState-Custom-TokenizationInCode","upnDomain") ;
+	logger.debug("updated upn is" +upn );
+	return upn;
+	
+  }
+  
+   //Field value for mail
+  if(field != null && field.getName().equalsIgnoreCase("mail"))
+  {
+    
+
+	logger.debug("samAccountName is in mail rule" +identity.getAttribute("ntid") );
+	String mail = identity.getAttribute("ntid");
+	int stringLength = mail.length();
+	logger.debug("stringLength is" +stringLength );
+	mail = mail.substring(0,stringLength-3);
+	logger.debug("mail is" +mail );
+	mail = mail + getValuefromConfig("AllState-Custom-TokenizationInCode","upnDomain") ;
+	logger.debug("updated mail is" +mail );
+	return mail;
+	
+  }
+  //Field value for DisplayName
+  if(field != null && field.getName().equalsIgnoreCase("displayName"))
+  {
+    String lName = identity.getAttribute("lastname");
+    lName = lName.trim();
+    String fName = identity.getAttribute("firstname");
+    fName = fName.trim();
+	String dispName = lName + ", " + fName ;
+    logger.debug("displayName is"+ dispName);
+    return dispName;
+  }
+
+  //Field value for First Name
+  if(field != null && field.getName().equalsIgnoreCase("givenName"))
+  {
+    logger.debug("givenName is"+ identity.getAttribute("firstname"));
+    return identity.getAttribute("firstname");
+  }
+
+  //Field value for Last Name
+  if(field != null && field.getName().equalsIgnoreCase("sn"))
+  {
+    logger.debug("givenName is"+ identity.getAttribute("lastname"));
+    return identity.getAttribute("lastname");
+  }
+  
+       //Field value for EmployeeID
+  if(field != null && field.getName().equalsIgnoreCase("password"))
+  {
+    logger.debug("password is");
+	PasswordPolicy policy = context.getObjectByName(PasswordPolicy.class, "DILab-AD-Password-Policy");
+    String password = new PasswordGenerator(context).generatePassword(policy);
+	logger.debug("password generated is" +password );
+    return password;
+  }
+  
+   //Field value for Birthright Group
+  if(field != null && field.getName().equalsIgnoreCase("memberOf"))
+  {
+    logger.debug("memberOf is" + getValuefromConfig("AllState-Custom-TokenizationInCode","groupDN"));
+	String groupDN = getValuefromConfig("AllState-Custom-TokenizationInCode","groupDN");
+    return groupDN;
+  }
+
+  
+  ]]></Source>
+</Rule>

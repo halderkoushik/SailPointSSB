@@ -79,4 +79,6 @@
   <ObjectAttribute categoryName="Contractor" displayName="Contractor Manager" editMode="ReadOnly" name="ctrMgr" namedColumn="true" type="string"/>
   <ObjectAttribute categoryName="Service Account" displayName="Service Account Owner" editMode="ReadOnly" name="saccountOwnerone" namedColumn="true" type="string"/>
   <ObjectAttribute categoryName="Service Account" displayName="Service Cube" editMode="ReadOnly" name="serviceCube" namedColumn="true" type="string"/>
+  <ObjectAttribute displayName="Relationships" editMode="ReadOnly" name="relationships" namedColumn="true" type="string"/>
+  <ObjectAttribute displayName="Manager Relationships" editMode="ReadOnly" name="mgrrelationships" namedColumn="true" type="string"/>
 </ObjectConfig>

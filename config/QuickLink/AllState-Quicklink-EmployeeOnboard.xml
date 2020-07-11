@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE QuickLink PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<QuickLink action="workflow" category="employee" messageKey="Employee Onboard" name="AllState-Quicklink-EmployeeOnboard" ordering="1">
+  <Attributes>
+    <Map>
+      <entry key="httpSession">
+        <value>
+          <Script>
+            <Source><![CDATA[ 
+              import javax.faces.context.FacesContext;  
+              import javax.servlet.http.HttpSession;  
+              FacesContext fc = FacesContext.getCurrentInstance();  
+              HttpSession httpSession = fc.getExternalContext().getSession(true);  
+              return httpSession;  
+           ]]></Source>
+          </Script>
+        </value>
+      </entry>
+      <entry key="identityName">
+        <value>
+          <Script>
+            <Source><![CDATA[
+              return currentUser.getName();
+            ]]></Source>
+          </Script>
+        </value>
+      </entry>
+      <entry key="workflowName" value="AllState-Workflow-EmployeeUserOnboarding"/>
+    </Map>
+  </Attributes>
+  <QuickLinkOptions allowSelf="true">
+    <DynamicScopeRef>
+      <Reference class="sailpoint.object.DynamicScope" name="AllState-DynamicScope-Recruiter"/>
+    </DynamicScopeRef>
+  </QuickLinkOptions>
+</QuickLink>

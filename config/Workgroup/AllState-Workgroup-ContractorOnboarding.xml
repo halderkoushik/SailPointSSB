@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Identity PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Identity name="AllState-Workgroup-ContractorOnboarding" workgroup="true">
+  <Attributes>
+    <Map>
+      <entry key="displayName" value="AllState-Workgroup-ContractorOnboarding"/>
+      <entry key="email" value="test@test.com"/>
+    </Map>
+  </Attributes>
+  <Description>To raise the request for contractor onboarding</Description>
+  <Preferences>
+    <Map>
+      <entry key="workgroupNotificationOption">
+        <value>
+          <WorkgroupNotifationOption>Both</WorkgroupNotifationOption>
+        </value>
+      </entry>
+    </Map>
+  </Preferences>
+</Identity>

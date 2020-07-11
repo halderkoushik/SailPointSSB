@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Form PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Form name="AllState-Form-InviteEmployeeUser" type="Workflow">
+  <Attributes>
+    <Map>
+      <entry key="pageTitle" value="AllState-Form-InviteEmployeeUser"/>
+      <entry key="subtitle" value="Enter the details for Onboarding the Employee"/>
+      <entry key="title" value="Employee Onboarding Form"/>
+    </Map>
+  </Attributes>
+  <Description>This interface is for alliance manager to invite contractor users to Sailpoint</Description>
+  <Section name="Section 1">
+    <Field displayName="Employee Type" name="employeeTypeUser" required="true" type="string">
+      <AllowedValuesDefinition>
+        <Value>
+          <List>
+            <String>Employee</String>
+            <String>Intern</String>
+            <String>Independent Contractor</String>
+          </List>
+        </Value>
+      </AllowedValuesDefinition>
+    </Field>
+    <Field displayName="First Name" name="firstName" postBack="true" required="true" type="string"/>
+    <Field displayName="Last Name" name="lastName" postBack="true" required="true" type="string"/>
+    <Field displayName="Middle Name" name="middlename" postBack="true" type="string"/>
+    <Field displayName="User ID" dynamic="true" helpKey="Generated User ID" name="userID" required="true" type="string">
+      <Attributes>
+        <Map>
+          <entry key="readOnly" value="true"/>
+        </Map>
+      </Attributes>
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="AllState-Rule-ADFieldValue"/>
+      </RuleRef>
+    </Field>
+    <Field displayName="Comments" name="comments" required="true" type="string"/>
+    <Field displayName="Manager" name="managerUser" required="true" type="sailpoint.object.Identity"/>
+    <Field displayName="Start date" name="startDateUser" required="true" type="date"/>
+    <Field displayName="Hire Date" name="hireDate" required="true" type="date"/>
+    <Field displayName="End Date" name="endDateUser" type="date"/>
+    <Field displayName="Title" name="userTitle" required="true" type="string"/>
+    <Field displayName="Location" name="userLocation" required="true" type="string"/>
+    <Field displayName="Address" name="userAddress" required="true" type="string"/>
+    <Field displayName="Department" name="department" required="true" type="string">
+      <AllowedValuesDefinition>
+        <Value>
+          <List>
+            <String>NATIONAL OPERATIONS</String>
+            <String>PEMBRIDGE BRAND</String>
+            <String>IVANTAGE</String>
+            <String>ALLSTATE BRAND</String>
+          </List>
+        </Value>
+      </AllowedValuesDefinition>
+    </Field>
+  </Section>
+  <Button action="cancel" label="Cancel"/>
+  <Button action="next" label="Submit"/>
+</Form>

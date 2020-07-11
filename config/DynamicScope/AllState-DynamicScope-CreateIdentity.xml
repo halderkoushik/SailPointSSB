@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE DynamicScope PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<DynamicScope name="AllState-DynamicScope-CreateIdentity">
+  <Description>To allow the members of workgroup only to raise request for contractors</Description>
+  <PopulationRequestAuthority allowAll="true"/>
+  <Selector>
+    <IdentitySelector>
+      <MatchExpression>
+        <MatchTerm name="workgroups" type="IdentityAttribute" value="AllState-Workgroup-ContractorOnboarding"/>
+      </MatchExpression>
+    </IdentitySelector>
+  </Selector>
+</DynamicScope>

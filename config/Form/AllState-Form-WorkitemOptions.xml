@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Form PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Form name="AllState-Form-WorkitemOptions" type="Workflow">
+  <Attributes>
+    <Map>
+      <entry key="pageTitle" value="AllState-Form-WorkitemOptions"/>
+      <entry key="subtitle" value="Select the below options"/>
+      <entry key="title" value="WorkItem Options Selection"/>
+    </Map>
+  </Attributes>
+  <Description/>
+  <Section name="Section 1">
+    <Field displayName="Need Access to MailBox" name="mailboxAccess" type="string">
+      <AllowedValuesDefinition>
+        <Value>
+          <List>
+            <String>Yes</String>
+            <String>No</String>
+          </List>
+        </Value>
+      </AllowedValuesDefinition>
+    </Field>
+    <Field displayName="Need Access to Personal Drive" name="accessToPersonalDrive" type="string">
+      <AllowedValuesDefinition>
+        <Value>
+          <List>
+            <String>Yes</String>
+            <String>No</String>
+          </List>
+        </Value>
+      </AllowedValuesDefinition>
+    </Field>
+  </Section>
+  <Button action="cancel" label="Cancel"/>
+  <Button action="next" label="Submit"/>
+</Form>

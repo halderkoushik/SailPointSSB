@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE ObjectConfig PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<ObjectConfig name="Identity">
+  <Attributes>
+    <Map>
+      <entry key="defaultIdentityType">
+        <value>
+          <IdentityTypeDefinition name="IIQ_default">
+            <DisallowedAttributes>
+              <String>softwareVersion</String>
+              <String>administrator</String>
+            </DisallowedAttributes>
+          </IdentityTypeDefinition>
+        </value>
+      </entry>
+      <entry key="identityTypeDefinitions">
+        <value>
+          <List>
+            <IdentityTypeDefinition displayName="identity_type_employee" name="employee">
+              <DisallowedAttributes>
+                <String>softwareVersion</String>
+                <String>administrator</String>
+              </DisallowedAttributes>
+            </IdentityTypeDefinition>
+            <IdentityTypeDefinition displayName="identity_type_contractor" name="contractor">
+              <DisallowedAttributes>
+                <String>softwareVersion</String>
+                <String>administrator</String>
+              </DisallowedAttributes>
+            </IdentityTypeDefinition>
+            <IdentityTypeDefinition displayName="identity_type_partner" name="partner">
+              <DisallowedAttributes>
+                <String>softwareVersion</String>
+                <String>administrator</String>
+              </DisallowedAttributes>
+            </IdentityTypeDefinition>
+            <IdentityTypeDefinition displayName="identity_type_rpa" name="rpa">
+              <DisallowedAttributes>
+                <String>manager</String>
+              </DisallowedAttributes>
+              <ManagerCertifierAttribute>administrator</ManagerCertifierAttribute>
+            </IdentityTypeDefinition>
+            <IdentityTypeDefinition displayName="identity_type_service" name="service">
+              <DisallowedAttributes>
+                <String>softwareVersion</String>
+              </DisallowedAttributes>
+              <ManagerCertifierAttribute>administrator</ManagerCertifierAttribute>
+            </IdentityTypeDefinition>
+          </List>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <ObjectAttribute displayName="att_user_name" name="name" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_detected_roles" groupFactory="true" name="bundles" system="true" type="string"/>
+  <ObjectAttribute displayName="att_detected_role_summary" name="bundleSummary" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_assigned_roles" groupFactory="true" name="assignedRoles" system="true" type="string"/>
+  <ObjectAttribute displayName="att_assigned_role_summary" name="assignedRoleSummary" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_exceptions" name="exceptions" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_last_refresh" name="lastRefresh" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_last_login" name="lastLogin" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_capabilities" name="capabilities" system="true" type="string"/>
+  <ObjectAttribute displayName="att_composite_score" name="scorecard.compositeScore" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_inactive" name="inactive" standard="true" type="boolean"/>
+  <ObjectAttribute displayName="att_manager_status" name="managerStatus" system="true" type="boolean"/>
+  <ObjectAttribute displayName="att_rights" name="rights" system="true" type="string"/>
+  <ObjectAttribute displayName="att_workgroups" name="workgroups" system="true" type="string"/>
+  <ObjectAttribute displayName="att_software_version" name="softwareVersion" standard="true" type="string"/>
+  <ObjectAttribute displayName="att_administrator" name="administrator" standard="true" type="sailpoint.object.Identity"/>
+  <ObjectAttribute categoryName="Joiner" displayName="Implicit Joiner" editMode="ReadOnly" name="needsJoiner" namedColumn="true" type="string"/>
+  <ObjectAttribute displayName="Middle Name" editMode="ReadOnly" name="middleName" namedColumn="true" type="string"/>
+  <ObjectAttribute categoryName="Contractor" displayName="Contractor Expiration Date" editMode="ReadOnly" name="ctrexpDt" namedColumn="true" type="string"/>
+  <ObjectAttribute categoryName="Contractor" displayName="Contractor Manager" editMode="ReadOnly" name="ctrMgr" namedColumn="true" type="string"/>
+  <ObjectAttribute categoryName="Service Account" displayName="Service Account Owner" editMode="ReadOnly" name="saccountOwnerone" namedColumn="true" type="string"/>
+  <ObjectAttribute categoryName="Service Account" displayName="Service Cube" editMode="ReadOnly" name="serviceCube" namedColumn="true" type="string"/>
+  <ObjectAttribute displayName="Relationships" editMode="ReadOnly" name="relationships" namedColumn="true" type="string"/>
+  <ObjectAttribute displayName="Manager Relationships" editMode="ReadOnly" name="mgrrelationships" namedColumn="true" type="string"/>
+  <ObjectAttribute displayName="att_display_name" editMode="ReadOnly" name="displayName" standard="true" type="string">
+    <AttributeSource name="fullName">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Employee ID" editMode="ReadOnly" extendedNumber="2" name="Employee_ID" type="string">
+    <AttributeSource name="Employee_ID">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="att_first_name" editMode="ReadOnly" name="firstname" standard="true" type="string">
+    <AttributeSource name="firstName">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="att_last_name" editMode="ReadOnly" name="lastname" standard="true" type="string">
+    <AttributeSource name="lastName">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="att_identity_type" editMode="ReadOnly" name="type" standard="true" type="string">
+    <AttributeSource name="AppRule: DILAB-identityAttribute-Type-Rule HR - Employees">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="DILAB-identityAttribute-Type-Rule"/>
+      </RuleRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Language" editMode="ReadOnly" name="Language" type="string">
+    <AttributeSource name="Language">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Hire Date" editMode="ReadOnly" name="Hire_Date" type="string"/>
+  <ObjectAttribute displayName="Service Date" editMode="ReadOnly" name="Service_Date" type="string">
+    <AttributeSource name="Service_Date">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Business Name" editMode="ReadOnly" name="Bus_Name" type="string">
+    <AttributeSource name="Bus_Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Division Name" editMode="ReadOnly" name="Div_Name" type="string">
+    <AttributeSource name="Div_Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Company Code" editMode="ReadOnly" name="Co_Code" type="string">
+    <AttributeSource name="Co_Code">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Department Name" editMode="ReadOnly" name="Dept_Name" type="string">
+    <AttributeSource name="Dept_Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Country" editMode="ReadOnly" name="Country" type="string">
+    <AttributeSource name="Country">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Street Address" editMode="ReadOnly" name="Street_Address" type="string">
+    <AttributeSource name="Street_Address">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Province" editMode="ReadOnly" name="Prov" type="string">
+    <AttributeSource name="Prov">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Cost Centre" editMode="ReadOnly" name="Cost_Ctr" type="string">
+    <AttributeSource name="Cost_Ctr">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Manager First Name" editMode="ReadOnly" name="Mgr_First" type="string">
+    <AttributeSource name="Mgr_First">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Manager Last Name" editMode="ReadOnly" name="Mgr_Last" type="string">
+    <AttributeSource name="Mgr_Last">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Manager Email" editMode="ReadOnly" name="Manager_Email" type="string">
+    <AttributeSource name="Manager-Email">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Manager NTID" editMode="ReadOnly" name="Mgr_NTID" type="string">
+    <AttributeSource name="Mgr_NTID">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Preferred Name" editMode="ReadOnly" name="Preferred_Name" type="string">
+    <AttributeSource name="Preferred_Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Office Number" editMode="ReadOnly" name="Officenumber" type="string">
+    <AttributeSource name="Officenumber">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Job Code" editMode="ReadOnly" name="Job_code" type="string">
+    <AttributeSource name="Job_code">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Job Description" editMode="ReadOnly" name="Job_Description" type="string">
+    <AttributeSource name="Job_Description">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Position Code" editMode="ReadOnly" name="Position_Code" type="string">
+    <AttributeSource name="Position_Code">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Position Description" editMode="ReadOnly" name="Position_Description" type="string">
+    <AttributeSource name="Position_Description">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="att_email" editMode="UntilFeedValueChanges" name="email" standard="true" type="string"/>
+  <ObjectAttribute displayName="Country Code" editMode="ReadOnly" name="Country_Code" type="string">
+    <AttributeSource name="Country_Code">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Effective Date" editMode="ReadOnly" name="Effective_Date" type="string">
+    <AttributeSource name="Effective_Date">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Effective Status" editMode="ReadOnly" name="Effective_Status" type="string">
+    <AttributeSource name="Effective_Status">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="HR - Employees"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="NTID" editMode="ReadOnly" extendedNumber="3" name="ntid" type="string"/>
+  <ObjectAttribute displayName="GUID" editMode="ReadOnly" name="guid" type="string"/>
+  <ObjectAttribute displayName="Start Date" editMode="ReadOnly" name="startDate" type="string"/>
+  <ObjectAttribute displayName="Title" editMode="ReadOnly" name="title" type="string"/>
+  <ObjectAttribute displayName="Location" editMode="ReadOnly" name="location" type="string"/>
+  <ObjectAttribute displayName="Address" editMode="ReadOnly" name="address" type="string"/>
+  <ObjectAttribute displayName="att_manager" editMode="UntilFeedValueChanges" groupFactory="true" name="manager" standard="true" type="sailpoint.object.Identity"/>
+  <ObjectAttribute displayName="End Date" editMode="ReadOnly" name="endDate" type="string"/>
+  <ObjectAttribute displayName="Employee Type" editMode="ReadOnly" name="employeeType" type="string"/>
+</ObjectConfig>

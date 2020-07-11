@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE EmailTemplate PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<EmailTemplate name="EmailTemplate-FrameworkFooter">
+  <Body>
+    &lt;p&gt;Please do not reply to this email&lt;/p&gt;		
+  </Body>
+  <Subject>Global Footer</Subject>
+</EmailTemplate>

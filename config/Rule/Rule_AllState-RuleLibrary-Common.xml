@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule language="beanshell" name="AllState-RuleLibrary-Common">
+  <Source><![CDATA[
+
+  import sailpoint.object.Identity;
+  import sailpoint.object.ProvisioningPlan;
+  import sailpoint.object.ProvisioningPlan.AccountRequest;
+  import sailpoint.object.ProvisioningPlan.AttributeRequest;
+  import sailpoint.object.PasswordPolicy;
+  import sailpoint.api.PasswordGenerator;
+  import sailpoint.object.EmailTemplate;
+  import sailpoint.object.EmailOptions;
+  import java.util.Date;
+  import java.text.SimpleDateFormat;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Application;
+  import sailpoint.connector.Connector;
+  import sailpoint.object.ResourceObject;
+  import sailpoint.connector.ConnectorFactory;
+  import sailpoint.connector.JDBCConnector;
+  import sailpoint.tools.CloseableIterator;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Link;
+  import sailpoint.object.Configuration;
+  import sailpoint.object.Custom;
+  import sailpoint.object.TaskResult;
+  import sailpoint.object.Bundle;
+  import sailpoint.object.Rule;
+  import sailpoint.api.Aggregator;
+  import sailpoint.object.Attributes;
+  import sailpoint.object.ManagedAttribute;
+  import org.apache.log4j.Logger;
+  import org.apache.log4j.Level;
+
+  Logger logger = Logger.getLogger("com.CustomLog.Logging");
+  //This rule library stores different methods used in different workflows and rules
+
+  
+  
+ 
+  
+  //Create the Contractor Plan from form
+   public ProvisioningPlan createContractorPlanForContractorDB(String identityName, String type)
+  {
+    //Creating a new plan for Sailpoint Identity Creation
+    ProvisioningPlan planNew = new ProvisioningPlan();
+	Identity userIdentity = context.getObjectByName(Identity.class,identityName);
+	if(userIdentity != null) {
+	
+		AccountRequest accountRequest=new AccountRequest();
+		accountRequest.setApplication("Contractor DB");
+		accountRequest.setNativeIdentity(identityName);
+		
+	
+		logger.debug("type is" + type );
+		if(type != null && type.equalsIgnoreCase("IdentityEditRequest")) {
+			logger.debug("IdentityEditRequest " );
+			accountRequest.setOperation(AccountRequest.Operation.Modify);
+			
+			
+		}
+		else  {
+			logger.debug("Create Request" );
+			accountRequest.setOperation(AccountRequest.Operation.Create);
+			accountRequest.add(new AttributeRequest("userID", ProvisioningPlan.Operation.Set, userIdentity.getName()));
+		
+		}
+		planNew.add(accountRequest);
+	}
+    logger.debug("plan created is " + planNew.toXml());
+    return planNew;
+  }
+ 
+  
+  // To generate GUID of Contractor
+  public String generateContractorGUID()
+  {
+   
+		//Generating the GUID of the user
+		  String UID = "C";
+		  String charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		  boolean flagNew = true;
+		  while(flagNew)
+		  {
+			Random random = new Random();
+			boolean flag = true;
+			int counter = 0;
+			while(flag)
+			{
+			  if(counter==2) {        
+				flag = false;
+			  }
+			  char c = charList.charAt(random.nextInt(charList.length()));
+			  //Adding two random characters at the end of the UID
+			  String characterString = Character.toString(c);
+			  logger.debug("check for duplicate character "+ UID.contains(characterString) );
+			  if(!UID.contains(characterString) )
+			  {
+				UID = UID + characterString;
+				logger.debug("UID after adding the characters"+UID);
+				counter = counter + 1;
+			  }
+			}
+			String userPin = String.format("%04d", random.nextInt(10000));
+			//Adding 4 random digits at the end of the UID
+			UID = UID + userPin;
+			Identity duplicateUIDIdentity = context.getObjectByName(Identity.class,UID);
+			if((null == duplicateUIDIdentity)) {
+			  flagNew = false;
+			}
+		  }
+		  logger.debug("UID generated is "+ UID);
+		 return UID;
+  }
+  
+  
+
+
+
+  //Getting the value from configuration file 
+  public String getValuefromConfig(String configurationFileName, String key)
+  {
+    logger.debug("File Name is "+ configurationFileName);
+    //Configuration configurationToken = context.getObjectByName(Configuration.class, configurationFileName);
+    Custom configurationToken = context.getObjectByName(Custom.class, configurationFileName);
+    String valueConfig;
+    if(configurationToken != null)
+    {
+      valueConfig = configurationToken.get(key);
+    }
+    //	logger.debug("value getting return is " + valueConfig);
+    return valueConfig;
+  }
+
+
+
+
+  
+
+  
+  ]]></Source>
+</Rule>

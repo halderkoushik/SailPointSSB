@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Form PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Form name="AllState-Form-Mailbox" type="Workflow">
+  <Attributes>
+    <Map>
+      <entry key="pageTitle" value="AllState-Form-Mailbox"/>
+      <entry key="title" value="MailBox Workitem"/>
+    </Map>
+  </Attributes>
+  <Section name="Section 1">
+    <Field displayName="SA to request mailbox reassignment from Northbrook Messaging team, remove rest of access based on department template, and remove personal drive" displayOnly="true" name="action" type="string">
+      <Attributes>
+        <Map>
+          <entry key="readOnly" value="true"/>
+          <entry key="xtype" value="label"/>
+        </Map>
+      </Attributes>
+    </Field>
+    <Field displayName="Comment" name="comment" required="true" type="string"/>
+  </Section>
+  <Button action="next" label="Submit"/>
+  <Button action="cancel" label="Cancel"/>
+</Form>

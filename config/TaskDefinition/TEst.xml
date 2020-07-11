@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskDefinition PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskDefinition name="TEst" resultAction="Rename" subType="Application Reports" type="LiveReport">
+  <Attributes>
+    <Map>
+      <entry key="TaskSchedule.host"/>
+      <entry key="disableDetail" value="false"/>
+      <entry key="disableSummary" value="false"/>
+      <entry key="reportColumnOrder" value="name, numberAccounts, lastAgg, oldRefresh, newRefresh, totalAssignments, totalAttributes"/>
+    </Map>
+  </Attributes>
+  <Description>Displays information about each application in detailed format.</Description>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Parent>
+    <Reference class="sailpoint.object.TaskDefinition" name="Application Status Report"/>
+  </Parent>
+</TaskDefinition>

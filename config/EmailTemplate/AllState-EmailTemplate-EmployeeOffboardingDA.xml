@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE EmailTemplate PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<EmailTemplate name="AllState-EmailTemplate-EmployeeOffboardingDA">
+  <Body>
+	
+		<![CDATA[<html>
+		<p>
+	
+			Dear DA,<br><br>
+
+			As per HR record, a termination has been requested for the employee below.<br>
+			<br><br>
+			
+			<strong>NTID : $employeeId</strong><br>
+			<strong>Name : $firstName $lastName</strong><br><br>
+			
+			Please follow current processes to disable other application accounts that belong to the employee above.<br><br>
+			
+			
+			
+			Thanks for your support!<br>
+			
+
+			<span style="color:red"><strong>Please do not reply to this system-generated email.</strong></span><br><br>
+			
+		</p>
+		</html>]]>
+	
+  </Body>
+  <Description>
+		Employee offboarding Mail
+    </Description>
+  <Signature>
+    <Inputs>
+      <Argument name="supervisor" type="String">
+        <Description>Manager name</Description>
+      </Argument>
+      <Argument name="firstName" type="String">
+        <Description>first name</Description>
+      </Argument>
+      <Argument name="lastName" type="String">
+        <Description>last name</Description>
+      </Argument>
+      <Argument name="employeeId" type="String">
+        <Description>Employee ID</Description>
+      </Argument>
+    </Inputs>
+  </Signature>
+  <Subject>NO ACTION REQUIRED: Termination requested for $firstName $lastName</Subject>
+</EmailTemplate>

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskDefinition PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskDefinition formPath="/monitor/tasks/accountGroupAggregationTask.xhtml" name="DILAB AD Group Aggregation" resultAction="Delete" subType="task_item_type_acct_grp_aggregation" type="AccountGroupAggregation">
+  <Attributes>
+    <Map>
+      <entry key="TaskSchedule.host"/>
+      <entry key="aggregationType" value="group"/>
+      <entry key="applications" value="dilab.ca-AD"/>
+      <entry key="checkDeleted" value="true"/>
+      <entry key="deltaAggregation" value="false"/>
+      <entry key="descriptionLocale" value="en_US"/>
+      <entry key="groupSchema"/>
+      <entry key="promoteClassifications" value="false"/>
+      <entry key="taskCompletionEmailNotify" value="Disabled"/>
+      <entry key="taskCompletionEmailRecipients"/>
+      <entry key="taskCompletionEmailTemplate"/>
+    </Map>
+  </Attributes>
+  <Description>Task template for application group scanning.</Description>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Parent>
+    <Reference class="sailpoint.object.TaskDefinition" name="Account Group Aggregation"/>
+  </Parent>
+</TaskDefinition>

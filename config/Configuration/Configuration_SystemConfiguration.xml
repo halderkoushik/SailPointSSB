@@ -46,16 +46,32 @@
           <Boolean/>
         </value>
       </entry>
-      <entry key="allowGeneratePasswordDelegated" value="true"/>
-      <entry key="allowGroupManagement" value="true"/>
-      <entry key="allowIdentitySearch" value="true"/>
+      <entry key="allowGeneratePasswordDelegated">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="allowGroupManagement">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="allowIdentitySearch">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
       <entry key="allowListViewBulkApprove" value="true"/>
       <entry key="allowListViewBulkClearDecisions" value="true"/>
       <entry key="allowListViewBulkMitigate" value="false"/>
       <entry key="allowListViewBulkReassign" value="true"/>
       <entry key="allowListViewBulkRevoke" value="true"/>
       <entry key="allowListViewSaveCustomEntityFields" value="false"/>
-      <entry key="allowPopulationSearch" value="true"/>
+      <entry key="allowPopulationSearch">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
       <entry key="allowPriorityEditing">
         <value>
           <Boolean/>
@@ -124,6 +140,7 @@
       <entry key="automaticClosingSigner" value="spadmin"/>
       <entry key="batchRequestAccessRequest" value="Workflow-FrameWork-Wrapper"/>
       <entry key="batchRequestAccountsRequest" value="Workflow-FrameWork-Wrapper"/>
+      <entry key="batchRequestApprover"/>
       <entry key="batchRequestIdentityCreateRequest" value="Workflow-FrameWork-Wrapper-Create"/>
       <entry key="batchRequestIdentityEditRequest" value="Workflow-FrameWork-Wrapper-Edit"/>
       <entry key="batchRequestPasswordsRequest" value="Workflow-FrameWork-Wrapper"/>
@@ -258,7 +275,11 @@
       <entry key="delegationRevocationEmailTemplate" value="EmailTemplate-Framework-DelegationRevocation"/>
       <entry key="disableDefaultToAppOwnerRemediation" value="false"/>
       <entry key="disableRoleModelerTreeView" value="false"/>
-      <entry key="displayClassificationsInAccessRequest" value="true"/>
+      <entry key="displayClassificationsInAccessRequest">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
       <entry key="emailNotifierType" value="smtp"/>
       <entry key="emailRequestDefinition" value="Email Request"/>
       <entry key="enableAuthLockout" value="false"/>
@@ -341,15 +362,139 @@
       <entry key="lcmAllowAccessPopulationSearch" value="true"/>
       <entry key="lcmAllowAccessSortPercentage" value="true"/>
       <entry key="lcmAllowAccessSortPercentageCount" value="50"/>
-      <entry key="lcmAllowRequestPermits" value="true"/>
-      <entry key="lcmCreateIdentityUseByDays" value="30"/>
-      <entry key="lcmEnableFulltext" value="true"/>
+      <entry key="lcmAllowEntitlementAttributesSearch">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowEntitlementIdentitiesSearch">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowEntitlementPercentageSlider">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowEntitlementPopulationSearch">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowEntitlementSortPercentage">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowEntitlementSortPercentageCount">
+        <value>
+          <Integer>0</Integer>
+        </value>
+      </entry>
+      <entry key="lcmAllowPercentLimitEntitlements">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowPercentLimitEntitlementsPercent">
+        <value>
+          <Integer>0</Integer>
+        </value>
+      </entry>
+      <entry key="lcmAllowPercentLimitRoles">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowPercentLimitRolesPercent">
+        <value>
+          <Integer>0</Integer>
+        </value>
+      </entry>
+      <entry key="lcmAllowRequestPermits">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="lcmAllowRoleAttributesSearch">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowRoleIdentitiesSearch">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowRolePercentageSlider">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowRolePopulationSearch">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowRoleSortPercentage">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmAllowRoleSortPercentageCount">
+        <value>
+          <Integer>0</Integer>
+        </value>
+      </entry>
+      <entry key="lcmCreateIdentityUseByDays">
+        <value>
+          <Integer>30</Integer>
+        </value>
+      </entry>
+      <entry key="lcmEnableApprovalRecommendations">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmEnableFulltext">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
       <entry key="lcmEnabled" value="true"/>
-      <entry key="lcmManageAccountsShowAllButtons" value="false"/>
-      <entry key="lcmMobileMaxSelectableUsers" value="100"/>
-      <entry key="lcmRequirePasswordIdentityCreate" value="true"/>
-      <entry key="lcmSearchMaxResults" value="100"/>
-      <entry key="lcmShowExternalTicketId" value="false"/>
+      <entry key="lcmFullTextIndexPath"/>
+      <entry key="lcmManageAccountsShowAllButtons">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmMobileMaxSelectableUsers">
+        <value>
+          <Integer>100</Integer>
+        </value>
+      </entry>
+      <entry key="lcmRequirePasswordIdentityCreate">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="lcmSearchMaxResults">
+        <value>
+          <Integer>100</Integer>
+        </value>
+      </entry>
+      <entry key="lcmSearchType"/>
+      <entry key="lcmShowExternalTicketId">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lcmUseRoleDetailsPage">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
       <entry key="lcmUserAccessFulltextIndex" value="BundleManagedAttribute"/>
       <entry key="linkMaxSearchableAttributes" value="5"/>
       <entry key="link_extension">
@@ -378,23 +523,53 @@
           </List>
         </value>
       </entry>
-      <entry key="manageAccountsDeleteSelfEnabled" value="true"/>
-      <entry key="manageAccountsDeleteSubordinateEnabled" value="true"/>
-      <entry key="manageAccountsDisableAutoRefreshStatus">
+      <entry key="manageAccountsDeleteSelfEnabled">
         <value>
-          <List>
-            <String> </String>
-          </List>
+          <Boolean>true</Boolean>
         </value>
       </entry>
-      <entry key="manageAccountsDisableSelfEnabled" value="true"/>
-      <entry key="manageAccountsDisableSubordinateEnabled" value="true"/>
-      <entry key="manageAccountsEnableSelfEnabled" value="true"/>
-      <entry key="manageAccountsEnableSubordinateEnabled" value="true"/>
-      <entry key="manageAccountsUnlockSelfEnabled" value="true"/>
-      <entry key="manageAccountsUnlockSubordinateEnabled" value="true"/>
+      <entry key="manageAccountsDeleteSubordinateEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="manageAccountsDisableAutoRefreshStatus"/>
+      <entry key="manageAccountsDisableSelfEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="manageAccountsDisableSubordinateEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="manageAccountsEnableSelfEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="manageAccountsEnableSubordinateEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="manageAccountsUnlockSelfEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="manageAccountsUnlockSubordinateEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
       <entry key="managedAttributeStatsMaxAttributes" value="5000"/>
-      <entry key="managedAttributeStatsMaxIdentities" value="200"/>
+      <entry key="managedAttributeStatsMaxIdentities">
+        <value>
+          <Integer>200</Integer>
+        </value>
+      </entry>
       <entry key="maxAuthLoginFailures" value="5"/>
       <entry key="maxAuthQuestionFailures" value="3"/>
       <entry key="mitigationExpirationAction" value="NOTHING"/>
@@ -415,6 +590,7 @@
       </entry>
       <entry key="openCertsEmailTemplate" value="EmailTemplate-Framework-OpenCertifications"/>
       <entry key="passwordSpecialCharacters" value="~!@#$%^*_+-={}\\][:;?,."/>
+      <entry key="passwordValidationRule"/>
       <entry key="pendingRoleRequestDeleteEmailTemplate" value="Pending Role Request Deleted"/>
       <entry key="pluginProhibitScripting" value="false"/>
       <entry key="pluginRelaxExportDeclarationEnforcement" value="false"/>
@@ -457,10 +633,26 @@
       <entry key="reportingResultRowThreshold" value="200000"/>
       <entry key="requestMaxAge" value="0"/>
       <entry key="requestProcessorPoolSize" value="10"/>
-      <entry key="requestRolesAssignableSelfEnabled" value="true"/>
-      <entry key="requestRolesAssignableSubordinateEnabled" value="true"/>
-      <entry key="requestRolesPermittedSelfEnabled" value="true"/>
-      <entry key="requestRolesPermittedSubordinateEnabled" value="true"/>
+      <entry key="requestRolesAssignableSelfEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="requestRolesAssignableSubordinateEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="requestRolesPermittedSelfEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="requestRolesPermittedSubordinateEnabled">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
       <entry key="requireBatchRequestApproval">
         <value>
           <Boolean/>
@@ -722,6 +914,7 @@
         </value>
       </entry>
       <entry key="selfRegistrationGroup" value="SelfRegistrationWorkGroup"/>
+      <entry key="selfServiceRegistrationRedirectPath"/>
       <entry key="serverRootPath" value="http://localhost:8080/identityiq"/>
       <entry key="showAutoRemediationDialog" value="false"/>
       <entry key="showCertificationIconTooltips" value="false"/>
@@ -811,8 +1004,8 @@
       <entry key="workflowLCMEntitlementsRequest" value="Workflow-FrameWork-Wrapper"/>
       <entry key="workflowLCMExpirePassword" value="Workflow-FrameWork-Wrapper"/>
       <entry key="workflowLCMForgotPassword" value="Workflow-FrameWork-Wrapper"/>
-      <entry key="workflowLCMIdentityCreateRequest" value="Workflow-FrameWork-Wrapper-Create"/>
-      <entry key="workflowLCMIdentityEditRequest" value="Workflow-FrameWork-Wrapper-Edit"/>
+      <entry key="workflowLCMIdentityCreateRequest" value="AllState-Workflow-FrameWork-Wrapper-Create"/>
+      <entry key="workflowLCMIdentityEditRequest" value="AllState-Workflow-FrameWork-Wrapper-Edit"/>
       <entry key="workflowLCMPasswordsRequest" value="Workflow-FrameWork-Wrapper"/>
       <entry key="workflowLCMRolesRequest" value="Workflow-FrameWork-Wrapper"/>
       <entry key="workflowLCMSelfServiceRegistrationRequest" value="Workflow-FrameWork-Registration"/>

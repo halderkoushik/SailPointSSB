@@ -28,7 +28,7 @@
             <entry key="additionalPasswordEmail" value="TRUE"/>
             <entry key="apCCEmailRule"/>
             <entry key="apCCEmailWorkgroup"/>
-            <entry key="apCreateEditWorkGroup"/>
+            <entry key="apCreateEditWorkGroup" value="Business Analyst"/>
             <entry key="apDisableStaticManagerEmailContent" value="False"/>
             <entry key="apEnableAutoApprovalsAccessAccountRequest" value="FALSE"/>
             <entry key="apFilterDetectedRoles" value="TRUE"/>
@@ -128,7 +128,7 @@
                 </List>
               </value>
             </entry>
-            <entry key="serviceAccountOwnerAttrs" value="saccountOwnerone,administrator"/>
+            <entry key="serviceAccountOwnerAttrs" value="saccountOwnerone, administrator"/>
             <entry key="serviceAccountreassignOwnershipToManager" value="TRUE"/>
             <entry key="serviceAccountreassignmentRule"/>
             <entry key="serviceAccountremoveOwnership" value="TRUE"/>

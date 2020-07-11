@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule language="beanshell" name="AllState-Rule-IdentityTriggerLeaverDAMail" type="IdentityTrigger">
+  <Description>This rule can be used for Certification Events that use rule triggers. The previousIdentity and newIdentity hold snapshots of the identity before the update has occurred and the state of the identity after the update, respectively.</Description>
+  <Signature returnType="boolean">
+    <Inputs>
+      <Argument name="log">
+        <Description>
+          The log object associated with the SailPointContext.
+        </Description>
+      </Argument>
+      <Argument name="context">
+        <Description>
+          A sailpoint.api.SailPointContext object that can be used to query the database if necessary.
+        </Description>
+      </Argument>
+      <Argument name="previousIdentity">
+        <Description>
+          The identity before the refresh/aggregation (this will be null when an
+          identity is created).
+        </Description>
+      </Argument>
+      <Argument name="newIdentity">
+        <Description>
+          The identity after the refresh/aggregation (this will be null when an
+          identity is deleted).
+        </Description>
+      </Argument>
+    </Inputs>
+    <Returns>
+      <Argument name="result">
+        <Description>
+          A boolean describing the result of the rule.
+        </Description>
+      </Argument>
+    </Returns>
+  </Signature>
+  <Source><![CDATA[
+  //leaver Rule
+  import java.text.SimpleDateFormat;
+  import sailpoint.object.Application;
+  import java.util.Date;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Link;
+  import org.apache.log4j.Logger;
+  import org.apache.log4j.Level;
+
+
+  Logger logger = Logger.getLogger("com.CustomLog.Logging");
+  logger.debug("in leaver trigger Rule for" );
+  if(null != newIdentity && null != previousIdentity){
+
+   
+    logger.debug("both identity not null in leaver trigger Rule for" + newIdentity.getName());
+    String newHrStatus, oldHrStatus;
+  
+    if( newIdentity.getAttribute("Effective_Status") != null)
+    {
+      newHrStatus = newIdentity.getAttribute("Effective_Status").toString();
+    }
+  
+	if( previousIdentity.getAttribute("Effective_Status") != null)
+    {
+      oldHrStatus = previousIdentity.getAttribute("Effective_Status").toString();
+	  logger.debug("previousIdentity effective status is " + previousIdentity.getAttribute("Effective_Status"));
+    }
+	logger.debug("New and Old HR status is" + newHrStatus + oldHrStatus);
+    //Termination date check  step
+    if ((newHrStatus != null && (newHrStatus.equalsIgnoreCase("T") ) )&& (oldHrStatus != null && (oldHrStatus.equalsIgnoreCase("A")))) {
+      logger.debug("New HR status is T ");
+      return true;
+    }
+  }	
+  ]]></Source>
+</Rule>

@@ -18,16 +18,70 @@
       <entry key="JOINER FEATURE">
         <value>
           <Map>
-            <entry key="EmailTemplate-FrameworkJoinerManager"/>
-            <entry key="EmailTemplate-FrameworkPasswordJoinerManager"/>
+            <entry key="EmailTemplate-FrameworkJoinerManager">
+              <value>
+                <Map>
+                  <entry key="Contractor DB">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
+            <entry key="EmailTemplate-FrameworkPasswordJoinerManager">
+              <value>
+                <Map>
+                  <entry key="Contractor DB">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
           </Map>
         </value>
       </entry>
       <entry key="JOINER REHIRE FEATURE">
         <value>
           <Map>
-            <entry key="EmailTemplate-FrameworkJoinerManager"/>
-            <entry key="EmailTemplate-FrameworkPasswordJoinerManager"/>
+            <entry key="EmailTemplate-FrameworkJoinerManager">
+              <value>
+                <Map>
+                  <entry key="Contractor DB">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
+            <entry key="EmailTemplate-FrameworkPasswordJoinerManager">
+              <value>
+                <Map>
+                  <entry key="Contractor DB">
+                    <value>
+                      <Map>
+                        <entry key="Create"/>
+                        <entry key="Enable"/>
+                        <entry key="Modify"/>
+                        <entry key="Unlock"/>
+                      </Map>
+                    </value>
+                  </entry>
+                </Map>
+              </value>
+            </entry>
           </Map>
         </value>
       </entry>

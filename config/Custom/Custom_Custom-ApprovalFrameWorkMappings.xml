@@ -198,7 +198,6 @@
             <entry key="CREATE IDENTITY FEATURE">
               <value>
                 <List>
-                  <String>ManagerOrServiceAccountOwner</String>
                   <String>Workgroup</String>
                 </List>
               </value>
@@ -206,7 +205,6 @@
             <entry key="EDIT IDENTITY FEATURE">
               <value>
                 <List>
-                  <String>ManagerOrServiceAccountOwner</String>
                   <String>Workgroup</String>
                 </List>
               </value>
@@ -306,7 +304,6 @@
             <entry key="REGISTRATION FEATURE">
               <value>
                 <List>
-                  <String>ManagerOrServiceAccountOwner</String>
                   <String>Workgroup</String>
                 </List>
               </value>

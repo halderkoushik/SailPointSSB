@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application authoritative="true" connector="sailpoint.connector.DelimitedFileConnector" featuresString="DIRECT_PERMISSIONS, NO_RANDOM_ACCESS, DISCOVER_SCHEMA" icon="enterpriseIcon" name="HR - Employees" profileClass="" type="DelimitedFile">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="HR Correlation"/>
+  </AccountCorrelationConfig>
+  <Attributes>
+    <Map>
+      <entry key="PassphraseForPrivateKey"/>
+      <entry key="PrivateKeyFilePath"/>
+      <entry key="acceleratorPackEnabled" value="TRUE"/>
+      <entry key="accountCreateConditionalRule"/>
+      <entry key="accountCreateEntitlements"/>
+      <entry key="accountDisableAttrExpression" value="Effective_Status#IIQDisabled#T"/>
+      <entry key="additionalAppBusApprovalRule"/>
+      <entry key="additionalAppBusApprovers"/>
+      <entry key="afterPassExpProcess"/>
+      <entry key="afterProvisioningRule"/>
+      <entry key="afterpwdexpAttr"/>
+      <entry key="afterticketprovisioningExtendedrule"/>
+      <entry key="apAdditionalApplicationAfterProvisioningRule"/>
+      <entry key="apAdditionalApplicationCorrelationRule"/>
+      <entry key="apAdditionalApplicationCreationRule"/>
+      <entry key="apAdditionalApplicationCustomizationRule"/>
+      <entry key="apAdditionalApplicationMCustomizationRule"/>
+      <entry key="apAdditionalApplicationMGroupRefreshRule"/>
+      <entry key="apAdditionalApplicationPreIterateRule"/>
+      <entry key="apAfterMoverJoiner">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apAfterRehireAttrSync">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apAppendApplicationName">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apAttributeSyncEligibleRule"/>
+      <entry key="apBeforeMoverAttrSync">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="apPopulationReverseLeaverOptions"/>
+      <entry key="apServiceAccountUniqueName"/>
+      <entry key="appBusApprovalRule"/>
+      <entry key="appBusApprovers"/>
+      <entry key="assignmentGroupname"/>
+      <entry key="authoritativeEmployee" value="false"/>
+      <entry key="authoritativeNonEmployee" value="false"/>
+      <entry key="authoritativeServiceAccount" value="false"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="beforemoverAccount"/>
+      <entry key="beforemoverPrimaryaccount">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="beforepwdexpAttr"/>
+      <entry key="busApp">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="commentsAttr"/>
+      <entry key="commentsValue"/>
+      <entry key="compositeDefinition"/>
+      <entry key="delimiter" value="|"/>
+      <entry key="displayFormRule"/>
+      <entry key="eligibilityExpression"/>
+      <entry key="enablepsaValidation">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="enablepswexpNotification"/>
+      <entry key="entDir">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="evaluateCreateprovpolicy" value="False"/>
+      <entry key="file" value="C:\SailPoint\UtkarshBajpai\HRFeed.csv"/>
+      <entry key="filetransport" value="local"/>
+      <entry key="filterEmptyRecords">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="group.filetransport" value="local"/>
+      <entry key="group.filterEmptyRecords">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="group.partitionMode" value="auto"/>
+      <entry key="hardPolicyviolations"/>
+      <entry key="hasHeader">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="isCaseInsensitiveMerge">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="isSortedByIndexColumn">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="joinerEnabled"/>
+      <entry key="joinerPopulationRegex"/>
+      <entry key="joinerRoles"/>
+      <entry key="loaExtendedRule"/>
+      <entry key="loaProcess" value="Do Nothing"/>
+      <entry key="ltdExtendedRule"/>
+      <entry key="ltdProcess" value="Do Nothing"/>
+      <entry key="managerCorrelationFilter">
+        <value>
+          <Filter operation="EQ" property="name"/>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="moveAccountContainer"/>
+      <entry key="moverExtendedRule"/>
+      <entry key="moverProcess" value="Do Nothing"/>
+      <entry key="moverRevocation" value="Do Nothing"/>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="nativeChangeProcess" value="Do Nothing"/>
+      <entry key="omitmanagerPrivgaccess">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="parseType" value="delimited"/>
+      <entry key="partitionMode" value="auto"/>
+      <entry key="policyType" value="Do Nothing"/>
+      <entry key="policytypeExceptions"/>
+      <entry key="port"/>
+      <entry key="preIterateRule" value="Rule-FrameWork-Preiterate-DelimitedFile"/>
+      <entry key="primarySyncaccounts">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="primarypasswordSyncaccounts">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="provisioningMaxRetries"/>
+      <entry key="provisioningMaxStatusChecks"/>
+      <entry key="provisioningRetryThreshold"/>
+      <entry key="provisioningStatusCheckInterval"/>
+      <entry key="pwdexpAttr"/>
+      <entry key="pwdexpAttrexpression"/>
+      <entry key="pwdexpAttrexpressionRule"/>
+      <entry key="rehireExtendedRule"/>
+      <entry key="rehirePrimaryaccount">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="rehireProcess" value="Do Nothing"/>
+      <entry key="renameLDAPaccount">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="requestorFormRole"/>
+      <entry key="retryableErrors"/>
+      <entry key="reverseTerminationExtendedRule"/>
+      <entry key="reverseleaverProcess" value="Do Nothing"/>
+      <entry key="rtwLOAExtendedRule"/>
+      <entry key="rtwLTDxtendedRule"/>
+      <entry key="rtwloaProcess" value="Do Nothing"/>
+      <entry key="rtwltdProcess" value="Do Nothing"/>
+      <entry key="scramPwdattr"/>
+      <entry key="scramblePasswordAttr"/>
+      <entry key="sftpAuthMethod" value="password"/>
+      <entry key="skipSupervisorApproval"/>
+      <entry key="softPolicyviolations"/>
+      <entry key="stopIfLineHasWrongColumnLength">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="targetpasswordSync"/>
+      <entry key="templateApplication" value="DelimitedFile Template"/>
+      <entry key="terminationExtendedRule"/>
+      <entry key="terminationProcess" value="Do Nothing"/>
+      <entry key="txCombinationName"/>
+      <entry key="xDays"/>
+      <entry key="xDeleteDays"/>
+      <entry key="xdaysresetPwd"/>
+    </Map>
+  </Attributes>
+  <CorrelationRule>
+    <Reference class="sailpoint.object.Rule" name="Rule-FrameWork-Correlation"/>
+  </CorrelationRule>
+  <CreationRule>
+    <Reference class="sailpoint.object.Rule" name="Rule-FrameWork-Creation-Joiner-Authoritative-Source"/>
+  </CreationRule>
+  <CustomizationRule>
+    <Reference class="sailpoint.object.Rule" name="Rule-Framework-RapidAppOnBoarding-Customization-Rule"/>
+  </CustomizationRule>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema displayAttribute="Employee_ID" identityAttribute="Employee_ID" instanceAttribute="" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="Employee_ID" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="First_Name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Last_Name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Language" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Hire_Date" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Service_Date" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Employment_Type" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Bus_Name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Co_Code" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Div_Name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Dept_Name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Country_Code" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Country" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Street_Address" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Prov" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Cost_Ctr" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Mgr_First" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Mgr_Last" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Manager-Email" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Mgr_NTID" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Preferred_Name" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Email" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Officenumber" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Job_code" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Job_Description" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Position_Code" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Position_Description" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Effective_Date" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="Effective_Status" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="NTID" type="string">
+        <Description/>
+      </AttributeDefinition>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

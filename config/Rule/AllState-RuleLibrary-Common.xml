@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule language="beanshell" name="AllState-RuleLibrary-Common">
+  <Source><![CDATA[
+
+  import sailpoint.object.Identity;
+  import sailpoint.object.ProvisioningPlan;
+  import sailpoint.object.ProvisioningPlan.AccountRequest;
+  import sailpoint.object.ProvisioningPlan.AttributeRequest;
+  import sailpoint.object.PasswordPolicy;
+  import sailpoint.api.PasswordGenerator;
+  import sailpoint.object.EmailTemplate;
+  import sailpoint.object.EmailOptions;
+  import java.util.Date;
+  import java.text.SimpleDateFormat;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Application;
+  import sailpoint.connector.Connector;
+  import sailpoint.object.ResourceObject;
+  import sailpoint.connector.ConnectorFactory;
+  import sailpoint.connector.JDBCConnector;
+  import sailpoint.tools.CloseableIterator;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Link;
+  import sailpoint.object.Configuration;
+  import sailpoint.object.Custom;
+  import sailpoint.object.TaskResult;
+  import sailpoint.object.Bundle;
+  import sailpoint.object.Rule;
+  import sailpoint.api.Aggregator;
+  import sailpoint.object.Attributes;
+  import sailpoint.object.ManagedAttribute;
+  import org.apache.log4j.Logger;
+  import org.apache.log4j.Level;
+
+  Logger logger = Logger.getLogger("com.CustomLog.Logging");
+  //This rule library stores different methods used in different workflows and rules
+
+  
+  
+ 
+  
+  //Create the Contractor Plan from form
+   public ProvisioningPlan createEmployeePlanForSailpoint(Map identityModel, String launcher)
+  {
+      
+	//Creating a new plan for Sailpoint Identity Creation
+		ProvisioningPlan planNew = new ProvisioningPlan();
+		String employeeGUID = generateEmployeeGUID(identityModel);
+		AccountRequest accountRequest=new AccountRequest();
+		accountRequest.setApplication("IIQ");
+		accountRequest.setOperation(AccountRequest.Operation.Create);
+		accountRequest.setNativeIdentity(employeeGUID);
+		logger.debug("samAccountName is in createEmployeePlanForSailpoint rule" +identityModel.get("userID") );
+		String mail = identityModel.get("userID");
+		int stringLength = mail.length();
+		logger.debug("stringLength is" +stringLength );
+		mail = mail.substring(0,stringLength-3);
+		logger.debug("mail is" +mail );
+		mail = mail + getValuefromConfig("AllState-Custom-TokenizationInCode","upnDomain") ;
+		logger.debug("updated mail is" +mail );
+		
+	
+		logger.debug("identityModel of the user is"+ identityModel );
+		accountRequest.add(new AttributeRequest("firstname", ProvisioningPlan.Operation.Set, identityModel.get("firstName")));
+		accountRequest.add(new AttributeRequest("lastname", ProvisioningPlan.Operation.Set, identityModel.get("lastName")));
+		accountRequest.add(new AttributeRequest("ntid", ProvisioningPlan.Operation.Set, identityModel.get("userID")));
+		accountRequest.add(new AttributeRequest("type", ProvisioningPlan.Operation.Set, "employee" ));
+		accountRequest.add(new AttributeRequest("manager", ProvisioningPlan.Operation.Set, identityModel.get("managerUser")));
+		accountRequest.add(new AttributeRequest("startDate", ProvisioningPlan.Operation.Set, identityModel.get("startDateUser")));
+		accountRequest.add(new AttributeRequest("Hire_Date", ProvisioningPlan.Operation.Set, identityModel.get("hireDate")));
+		accountRequest.add(new AttributeRequest("endDate", ProvisioningPlan.Operation.Set, identityModel.get("endDateUser")));
+		accountRequest.add(new AttributeRequest("title", ProvisioningPlan.Operation.Set, identityModel.get("userTitle")));
+		accountRequest.add(new AttributeRequest("location", ProvisioningPlan.Operation.Set, identityModel.get("userLocation")));
+		accountRequest.add(new AttributeRequest("address", ProvisioningPlan.Operation.Set, identityModel.get("userAddress")));
+		accountRequest.add(new AttributeRequest("Dept_Name", ProvisioningPlan.Operation.Set, identityModel.get("department")));
+		accountRequest.add(new AttributeRequest("middleName", ProvisioningPlan.Operation.Set, identityModel.get("middlename")));
+		accountRequest.add(new AttributeRequest("employeeType", ProvisioningPlan.Operation.Set, identityModel.get("employeeTypeUser")));
+		accountRequest.add(new AttributeRequest("email", ProvisioningPlan.Operation.Set, mail));
+		
+		planNew.add(accountRequest);
+		Identity identity1 = new Identity();
+		identity1.setName(employeeGUID); 
+		planNew.setIdentity(identity1);
+		
+		wfcontext.setVariable("identityName",employeeGUID) ;
+		logger.debug("plan created is " + planNew.toXml());
+		return planNew;
+  }
+    
+  // To generate GUID of Employee
+  public String generateEmployeeGUID(Map identityModel)
+  {
+   
+		//Generating the GUID of the user
+		    String UID = "E";
+			String initialsFirstName = identityModel.get("firstName");
+			initialsFirstName = initialsFirstName.toUpperCase();
+			initialsFirstName = initialsFirstName.charAt(0).toString();
+			String initialsLastName = identityModel.get("lastName");
+			initialsLastName = initialsLastName.toUpperCase();
+			initialsLastName = initialsLastName.charAt(0).toString();
+			String initialsMiddleName = identityModel.get("middlename");
+			initialsMiddleName = initialsMiddleName.toUpperCase();
+			initialsMiddleName = initialsMiddleName.charAt(0).toString();
+			UID = UID + initialsFirstName + initialsLastName + initialsMiddleName;
+			Random random = new Random();
+			String userPin = String.format("%03d", random.nextInt(10000));
+			//Adding 7 random digits at the end of the UID
+			UID = UID + userPin;
+			Identity duplicateUIDIdentity = context.getObjectByName(Identity.class,UID);
+			if((null == duplicateUIDIdentity)) {
+			  flagNew = false;
+			}
+		  
+		 logger.debug("UID generated is "+ UID);
+		 return UID;
+  }
+  
+   //checking if the account is already present in AD
+  public String checkAttributeInAD(String attribute , String typeFlag)
+  {
+    String applicationName = getValuefromConfig("AllState-Custom-TokenizationInCode","Application");
+    logger.debug("attribute is"+ attribute);
+    String targetAttributeName;
+    //For creating filter to check if the attribute is already present
+    Filter attributeFilter ;
+    logger.debug("typeflag and attribute is " + typeFlag + attribute);
+    if(typeFlag.equalsIgnoreCase("sAMAccountName"))
+    {
+      attributeFilter = Filter.eq("sAMAccountName", attribute);
+    }
+
+    logger.debug("attributeFilter is " + attributeFilter);
+    Application applicationObject = context.getObjectByName(Application.class, applicationName);
+    if(applicationObject!=null)
+    {
+      String appConnectionName = applicationObject.getConnector();
+      logger.debug("Application  and connector are" + applicationName + appConnectionName);
+      //Creating the instance of connector object
+      Connector appConnector = sailpoint.connector.ConnectorFactory.getConnector(applicationObject, null);
+      logger.debug("connector object is" + appConnector);
+      if (appConnector == null) {
+        errorMessage = "error : Failed to construct an instance of connector " + appConnectionName;
+        logger.debug("Error is "+errorMessage );
+        return errorMessage;
+      }
+      ResourceObject resourceObject = null;
+      try {
+        Map optionalMap = new HashMap();
+        //Filtering in AD for users created directly using employeeNumber as filter
+        CloseableIterator resultAttribute = appConnector.iterateObjects("account", attributeFilter, optionalMap);
+        logger.debug("resultAttribute is "+resultAttribute );
+        if(resultAttribute != null && resultAttribute.hasNext() )
+        {
+          while (resultAttribute != null && resultAttribute.hasNext()) {
+            resourceObject = resultAttribute.next();
+            logger.debug("resourceObject is "+resourceObject );
+            if(resourceObject != null) {					
+              logger.debug("Attribute is in AD = " + resourceObject.getAttribute(typeFlag));
+              targetAttribute = resourceObject.getAttribute(typeFlag);
+              if( targetAttribute != null && !targetAttribute.isEmpty() && targetAttribute.equalsIgnoreCase(attribute) )	{
+                logger.debug("duplicate value present in target system of targetAttribute");
+                if(typeFlag.equalsIgnoreCase("sAMAccountName"))
+                {
+                  return "duplicate";
+                }
+              }
+              else if ( targetAttribute == null){
+                logger.debug("attribute not present in target system");
+                return "Not present";
+              }
+            }
+          }
+        }
+
+        return "Not present";  
+      }
+      catch (sailpoint.connector.ObjectNotFoundException exObj)
+      {
+        errorMessage = "Rrror : Connector could not find account for : " + sAMAccountName;
+        logger.error( "Error Message is "+ errorMessage);
+        return errorMessage;
+      }
+    }
+	 return "Not present";   
+  }
+  
+  
+    //Getting the value from configuration file 
+  public String getValuefromConfig(String configurationFileName, String key)
+  {
+    logger.debug("File Name is "+ configurationFileName);
+    //Configuration configurationToken = context.getObjectByName(Configuration.class, configurationFileName);
+    Custom configurationToken = context.getObjectByName(Custom.class, configurationFileName);
+    String valueConfig;
+    if(configurationToken != null)
+    {
+      valueConfig = configurationToken.get(key);
+    }
+    //	logger.debug("value getting return is " + valueConfig);
+    return valueConfig;
+  }
+
+  //Method to send mails
+  public void sendEmail(String toAddress, String emailTemplateName, Map mapArg, boolean sendNow) {
+    logger.debug("starting method to send mail");
+    EmailTemplate lTemplate = context.getObjectByName(EmailTemplate.class, emailTemplateName);
+    EmailOptions lOptions = new EmailOptions(toAddress, mapArg);
+    logger.debug("Mail args are: " + mapArg.toString());
+    logger.debug("Mail attributes : " + toAddress + emailTemplateName + lOptions);
+    lOptions.setSendImmediate(sendNow);
+    context.sendEmailNotification(lTemplate, lOptions);
+    logger.debug("ending method to send mail");
+  }
+  
+  ]]></Source>
+</Rule>
